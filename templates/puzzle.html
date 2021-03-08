@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Puzzle {{puzzle_number}}{% endblock %}
 
 {% block myblock %}
 {% markdown %}
 {% include "puzzles/Puzzle0" + puzzle_number +".md" %}
 {% endmarkdown %}
+
+Get your puzzle input <b><a href="{{ '/puzzleinput/%s'%puzzle_number }}">here</a></b>
 {% endblock %}
