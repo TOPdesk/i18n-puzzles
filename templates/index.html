@@ -3,6 +3,14 @@
 
 {% block myblock %}
 {% markdown %}
-{% include "puzzles/Puzzle0" + puzzle_number +".md" %}
+{% include "welcome.md" %}
 {% endmarkdown %}
+
+<h1>Puzzles</h1>
+<ul>
+{% for puzzle in puzzles %}
+  <li><a href="{{ '/puzzle/%s'%puzzle[7:8] }}">{{ puzzle[0:8] }}<a></li>
+{% endfor %}
+</ul>
+
 {% endblock %}
