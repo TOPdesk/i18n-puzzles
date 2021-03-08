@@ -3,6 +3,6 @@
 
 {% block myblock %}
 {% markdown %}
-{% include 'puzzles/Puzzle01.md' %}
+{% include "puzzles/Puzzle0" + puzzle_number +".md" %}
 {% endmarkdown %}
 {% endblock %}
