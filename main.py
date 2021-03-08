@@ -15,7 +15,7 @@ def home():
 def index():
    return render_template('login.html')
 
-@app.route('/setuser', methods = ['POST', 'GET'])
+@app.route('/setuser', methods = ['POST'])
 def setuser():
    if request.method == 'POST':
     user = request.form['nm']
