@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Puzzle {{puzzle_number}}{% endblock %}
 
-{% block myblock %}
+{% block content %}
+{% if username is not none %}
 {% markdown %}
 {% include "puzzles/Puzzle0" + puzzle_number +".md" %}
 {% endmarkdown %}
-
 Get your puzzle input <b><a href="{{ '/puzzleinput/%s'%puzzle_number }}">here</a></b>
+{% else %}
+<p>Please log in first.</p>
+{% endif %}
+
 {% endblock %}

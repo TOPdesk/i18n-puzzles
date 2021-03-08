@@ -1,13 +1,21 @@
 <!doctype html>
-<html>
-    <head>
-        <title>{% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        <h1><a href="/">TOPdesk Speed Coding Challenge</a></h1>
-        <article>
-            {% block myblock %}
-            {% endblock %}
-            </article>
-     </body>
+<html style="font-family:courier;max-width:800px;">
+
+<head>
+<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<h1><a href="/">TOPdesk Speed Coding Challenge</a></h1>
+{% if username is not none %}
+<p>Playing as: {{username}}</p>
+{% else %}
+<p>No user set, <a href="/login">login here</a>.</p>
+{% endif %}
+<article>
+{% block content %}
+{% endblock %}
+</article>
+</body>
+
 </html>

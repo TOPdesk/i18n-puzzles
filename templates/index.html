@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Welcome{% endblock %}
 
-{% block myblock %}
+{% block content %}
 {% markdown %}
 {% include "welcome.md" %}
 {% endmarkdown %}
@@ -9,7 +9,7 @@
 <h1>Puzzles</h1>
 <ul>
 {% for puzzle in puzzles %}
-  <li><a href="{{ '/puzzle/%s'%puzzle[7:8] }}">{{ puzzle[0:8] }}<a></li>
+<li><a href="{{ '/puzzle/%s'%puzzle[7:8] }}">{{ puzzle[0:8] }}</a></li>
 {% endfor %}
 </ul>
 
