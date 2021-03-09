@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}My score{% endblock %}
+
+{% block content %}
+
+<p>Solved puzzles:</p>
+{% if myscore %}
+<ul>
+    {% for key, value in myscore.items() %}
+        <li>Number {{key}}, submitted at {{value}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No puzzles solved yet.</p>
+{% endif %}
+
+{% endblock %}

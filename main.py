@@ -46,6 +46,15 @@ def getuser():
     print(scores[name])
     return '<p>username: '+name+'</p>'
 
+@app.route('/myscore')
+def myscore():
+    name = request.cookies.get('userID')
+    if (name not in scores):
+        scores[name] = {}
+    if (name not in players):
+        players.append(name)
+    return render_template("myscore.html", username=name, myscore=scores[name])
+
 @app.route("/puzzle/<number>")
 def puzzle(number):
     name = request.cookies.get('userID')
