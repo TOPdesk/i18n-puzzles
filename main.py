@@ -9,11 +9,11 @@ app.jinja_env.add_extension(MarkdownExtension)
 
 answers = {
     "1": "(-107,35)",
-    "2": "foo",
-    "3": "foo",
-    "4": "foo",
-    "5": "foo",
-    "6": "foo",
+    "2": "495",
+    "3": "711",
+    "4": "3732",
+    "5": "37",
+    "6": "1177",
 }
 players = []
 scores = {}
