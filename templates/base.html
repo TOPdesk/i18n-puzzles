@@ -7,10 +7,12 @@
 
 <body>
 <h1><a href="/">TOPdesk Speed Coding Challenge</a></h1>
+{% if not hideusername %}
 {% if username is not none %}
 <p>Playing as: {{username}}</p>
 {% else %}
 <p>No user set, <a href="/login">login here</a>.</p>
+{% endif %}
 {% endif %}
 <article>
 {% block content %}

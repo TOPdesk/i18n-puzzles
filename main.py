@@ -15,7 +15,7 @@ answers = {
     "5": "foo",
     "6": "foo",
 }
-
+players = []
 scoreboard = {}
 
 @app.route("/")
@@ -26,15 +26,19 @@ def home():
 
 @app.route('/login')
 def index():
-    return render_template('login.html')
+    return render_template('login.html', hideusername=True)
 
 @app.route('/setuser', methods = ['POST'])
 def setuser():
     name = request.form['nm']
-    scoreboard[name] = {}
-    resp = make_response(render_template('loginconfirm.html'))
-    resp.set_cookie('userID', name, secure=True)
-    return resp
+    if len(name) < 3 or len(name) > 20 or not name.isalnum() or name.upper() in (player.upper() for player in players):
+        return make_response(render_template('logindenied.html', hideusername=True))
+    else:
+        players.append(name)
+        scoreboard[name] = {}
+        resp = make_response(render_template('loginconfirm.html', hideusername=True))
+        resp.set_cookie('userID', name, secure=True)
+        return resp
 
 @app.route('/getuser')
 def getuser():
@@ -66,7 +70,7 @@ def submit_answer(number):
 
 @app.route("/scoreboard")
 def score_board():
-    return render_template("scoreboard.html", scores=scoreboard)
+    return render_template("scoreboard.html", hideusername=True, scores=scoreboard)
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8080)

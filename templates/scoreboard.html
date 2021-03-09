@@ -1,9 +1,7 @@
-<!-- <ul>
-    {% for key, value in scores.items() %}
-    <li>{{ key }} : {{ value }}</li> 
-    {% endfor %}
-</ul> -->
+{% extends "base.html" %}
+{% block title %}Scoreboard{% endblock %}
 
+{% block content %}
 <ul>
   {% for key, value in scores.items() %}
     {% for ikey, ivalue in value.items() %}
@@ -11,3 +9,4 @@
     {% endfor %}
   {% endfor %}
 </ul>
+{% endblock %}
