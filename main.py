@@ -16,7 +16,7 @@ answers = {
     "6": "foo",
 }
 players = []
-scoreboard = {}
+scores = {}
 
 @app.route("/")
 def home():
@@ -35,7 +35,7 @@ def setuser():
         return make_response(render_template('logindenied.html', hideusername=True))
     else:
         players.append(name)
-        scoreboard[name] = {}
+        scores[name] = {}
         resp = make_response(render_template('loginconfirm.html', hideusername=True))
         resp.set_cookie('userID', name, secure=True)
         return resp
@@ -43,7 +43,7 @@ def setuser():
 @app.route('/getuser')
 def getuser():
     name = request.cookies.get('userID')
-    print(scoreboard[name])
+    print(scores[name])
     return '<p>username: '+name+'</p>'
 
 @app.route("/puzzle/<number>")
@@ -61,11 +61,11 @@ def submit_answer(number):
     answered = request.form['answer_input']
 
     if (answers.get(number) == answered):
-        if (name not in scoreboard):
-            scoreboard[name] = {}
+        if (name not in scores):
+            scores[name] = {}
         if (name not in players):
             players.append(name)
-        scoreboard[name][number] = datetime.now()
+        scores[name][number] = datetime.now()
         template = "answercorrect.html"
     else:
         template = "answerincorrect.html"
@@ -74,7 +74,21 @@ def submit_answer(number):
 
 @app.route("/scoreboard")
 def score_board():
-    return render_template("scoreboard.html", hideusername=True, autorefresh=True, scores=scoreboard)
+    leaderboard = {}
+    items = []
+    for name, solved_times in scores.items():
+        latest_solve = datetime.fromtimestamp(0)
+        for puzzle_number, sovled_time in solved_times.items():
+            if (sovled_time > latest_solve):
+                latest_solve = sovled_time
+        leaderboard[name] = {"solvedcount": len(scores[name]), "date": latest_solve.strftime("%H:%M:%S.%f")}
+    
+    items = sorted(leaderboard.items(), key = sort_count_date)
+    return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=items)
+
+def sort_count_date(tup):
+    key, d = tup
+    return -d["solvedcount"], d["date"]
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8080)

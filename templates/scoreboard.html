@@ -2,11 +2,22 @@
 {% block title %}Scoreboard{% endblock %}
 
 {% block content %}
-<ul>
-  {% for key, value in scores.items() %}
-    {% for ikey, ivalue in value.items() %}
-      <li>{{ key }} : {{ ikey }} : {{ ivalue }}</li> 
-    {% endfor %}
-  {% endfor %}
-</ul>
+<h1>Leader board</h1>
+
+
+<table style="width:100%;border: 1px solid black;">
+<tr style="border: 1px solid black;">
+  <th>Name</th>
+  <th>Solved</th>
+  <th>Time</th>
+</tr>
+{% for value in leaderboard %}
+<tr>
+  <td style="border: 1px solid black;"> {{ value[0] }} </td>
+  <td style="border: 1px solid black;"> {{ value[1].get("solvedcount") }} </td>
+  <td style="border: 1px solid black;text-align: right"> {{ value[1].get("date") }} <td>
+</tr>
+{% endfor %}
+</table>
+
 {% endblock %}
