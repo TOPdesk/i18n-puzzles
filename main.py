@@ -61,6 +61,10 @@ def submit_answer(number):
     answered = request.form['answer_input']
 
     if (answers.get(number) == answered):
+        if (name not in scoreboard):
+            scoreboard[name] = {}
+        if (name not in players):
+            players.append(name)
         scoreboard[name][number] = datetime.now()
         template = "answercorrect.html"
     else:
@@ -70,7 +74,7 @@ def submit_answer(number):
 
 @app.route("/scoreboard")
 def score_board():
-    return render_template("scoreboard.html", hideusername=True, scores=scoreboard)
+    return render_template("scoreboard.html", hideusername=True, autorefresh=True, scores=scoreboard)
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8080)

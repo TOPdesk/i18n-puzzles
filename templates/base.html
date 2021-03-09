@@ -3,6 +3,9 @@
 
 <head>
 <title>{% block title %}{% endblock %}</title>
+{% if autorefresh %}
+<meta http-equiv="refresh" content="5">
+{% endif %}
 </head>
 
 <body>
