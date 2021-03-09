@@ -7,6 +7,7 @@ from waitress import serve
 app = Flask(__name__)
 app.jinja_env.add_extension(MarkdownExtension)
 
+accept_new_answers = True
 answers = {
     "1": "(-107,35)",
     "2": "foo",
@@ -46,6 +47,26 @@ def getuser():
     print(scores[name])
     return '<p>username: '+name+'</p>'
 
+@app.route('/startacceptinganswers')
+def start():
+    global accept_new_answers
+    accept_new_answers = True
+    return render_template("confirm.html", hideusername=True)
+
+@app.route('/stopacceptinganswers')
+def stop():
+    global accept_new_answers
+    accept_new_answers = False
+    return render_template("confirm.html", hideusername=True)
+
+@app.route('/resetscoresandplayers')
+def reset():
+    global players
+    global scores
+    players = []
+    scores = {}
+    return render_template("confirm.html", hideusername=True)
+
 @app.route('/myscore')
 def myscore():
     name = request.cookies.get('userID')
@@ -66,6 +87,9 @@ def puzzle_input(number):
 
 @app.route("/submitanswer/<number>", methods = ['POST'])
 def submit_answer(number):
+    if (not accept_new_answers):
+        return render_template("stop.html")
+
     name = request.cookies.get('userID')
     answered = request.form['answer_input']
 
