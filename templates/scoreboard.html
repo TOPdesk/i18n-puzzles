@@ -1,0 +1,13 @@
+<!-- <ul>
+    {% for key, value in scores.items() %}
+    <li>{{ key }} : {{ value }}</li> 
+    {% endfor %}
+</ul> -->
+
+<ul>
+  {% for key, value in scores.items() %}
+    {% for ikey, ivalue in value.items() %}
+      <li>{{ key }} : {{ ikey }} : {{ ivalue }}</li> 
+    {% endfor %}
+  {% endfor %}
+</ul>

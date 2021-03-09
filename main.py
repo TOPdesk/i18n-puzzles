@@ -1,6 +1,8 @@
 import os, os.path
 from flask import Flask, request, make_response, render_template
 from jinja_markdown import MarkdownExtension
+from datetime import datetime
+from waitress import serve
 
 app = Flask(__name__)
 app.jinja_env.add_extension(MarkdownExtension)
@@ -14,6 +16,8 @@ answers = {
     "6": "foo",
 }
 
+scoreboard = {}
+
 @app.route("/")
 def home():
     puzzle_list=os.listdir("templates/puzzles")
@@ -26,14 +30,16 @@ def index():
 
 @app.route('/setuser', methods = ['POST'])
 def setuser():
-    user = request.form['nm']
+    name = request.form['nm']
+    scoreboard[name] = {}
     resp = make_response(render_template('loginconfirm.html'))
-    resp.set_cookie('userID', user, secure=True)
+    resp.set_cookie('userID', name, secure=True)
     return resp
 
 @app.route('/getuser')
 def getuser():
     name = request.cookies.get('userID')
+    print(scoreboard[name])
     return '<p>username: '+name+'</p>'
 
 @app.route("/puzzle/<number>")
@@ -49,8 +55,18 @@ def puzzle_input(number):
 def submit_answer(number):
     name = request.cookies.get('userID')
     answered = request.form['answer_input']
-    template = "correct.html" if (answers.get(number) == answered) else "incorrect.html"
+
+    if (answers.get(number) == answered):
+        scoreboard[name][number] = datetime.now()
+        template = "correct.html"
+    else:
+        template = "incorrect.html"
+
     return make_response(render_template(template, puzzle_number=number, username=name))
 
+@app.route("/scoreboard")
+def score_board():
+    return render_template("scoreboard.html", scores=scoreboard)
+
 if __name__ == "__main__":
-    app.run()
+    serve(app, host="0.0.0.0", port=8080)
