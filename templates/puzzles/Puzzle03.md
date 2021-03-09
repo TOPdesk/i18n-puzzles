@@ -15,6 +15,7 @@ A **good** password has the following properties:
 
 
 For example:
+
 - `becdffa` is good because it contains 2 vowels, a double letter and none of the disallowed substrings.
 - `aa` is good because it has 2 vouwels and a double letter even though the letters used by the different rules overlap.
 - `bcdaefaa` is bad because it contains `ef`.
