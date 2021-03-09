@@ -9,12 +9,12 @@ app.jinja_env.add_extension(MarkdownExtension)
 
 accept_new_answers = True
 answers = {
-    "1": "(-107,35)",
-    "2": "495",
-    "3": "711",
-    "4": "3732",
-    "5": "37",
-    "6": "1177",
+    "1": ["(-107,35)", "(-107, 35)"],
+    "2": ["495"],
+    "3": ["711"],
+    "4": ["3732"],
+    "5": ["37"],
+    "6": ["1177"],
 }
 players = []
 scores = {}
@@ -93,7 +93,7 @@ def submit_answer(number):
     name = request.cookies.get('userID')
     answered = request.form['answer_input']
 
-    if (answers.get(number) == answered):
+    if (answered in answers.get(number)):
         if (name not in scores):
             scores[name] = {}
         if (name not in players):
@@ -125,3 +125,4 @@ def sort_count_date(tup):
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8080)
+    
