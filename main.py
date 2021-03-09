@@ -62,9 +62,9 @@ def submit_answer(number):
 
     if (answers.get(number) == answered):
         scoreboard[name][number] = datetime.now()
-        template = "correct.html"
+        template = "answercorrect.html"
     else:
-        template = "incorrect.html"
+        template = "answerincorrect.html"
 
     return make_response(render_template(template, puzzle_number=number, username=name))
 
