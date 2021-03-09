@@ -20,7 +20,7 @@ def setuser():
    if request.method == 'POST':
     user = request.form['nm']
     resp = make_response(render_template('loginconfirm.html'))
-    resp.set_cookie('userID', user)
+    resp.set_cookie('userID', user, secure=True)
     return resp
 
 @app.route('/getuser')
