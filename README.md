@@ -9,3 +9,9 @@ To run in prod mode (port 8080):
 ```
 $ python main.py
 ```
+
+Docker deployment to https://hub.docker.com/orgs/topdesk/repositories:
+```
+$ docker build -t topdesk/betabanenmarkt-coding-challenge .
+$ docker push topdesk/betabanenmarkt-coding-challenge
+```
