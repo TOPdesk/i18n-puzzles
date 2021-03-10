@@ -1,5 +1,5 @@
 # Basic .gitattributes for a python repo.
-eol = lf
+eol=lf
 
 # Source files
 # ============
