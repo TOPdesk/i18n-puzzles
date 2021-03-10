@@ -2,7 +2,7 @@
 
 Race to complete a series of coding puzzles.
 
-You will be given a set of basic puzzles, that should be relatively easy to solve. Speed is key! See how many you can solve or how fast yo can solve them all. You will get 50 minutes. Be the fastest!
+You will be given a set of basic puzzles, that should be relatively easy to solve. Speed is key! See how many you can solve or how fast you can solve them all. You will get __45 minutes__. Be the fastest!
 
 ## Requirements
 
