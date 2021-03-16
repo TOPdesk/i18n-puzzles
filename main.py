@@ -111,9 +111,9 @@ def score_board():
     items = []
     for name, solved_times in scores.items():
         latest_solve = datetime.fromtimestamp(0)
-        for puzzle_number, sovled_time in solved_times.items():
-            if (sovled_time > latest_solve):
-                latest_solve = sovled_time
+        for puzzle_number, solved_time in solved_times.items():
+            if (solved_time > latest_solve):
+                latest_solve = solved_time
         leaderboard[name] = {"solvedcount": len(scores[name]), "date": latest_solve.strftime("%H:%M:%S.%f")}
     
     items = sorted(leaderboard.items(), key = sort_count_date)
