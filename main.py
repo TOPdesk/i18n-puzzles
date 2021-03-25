@@ -3,27 +3,46 @@ from flask import Flask, request, make_response, render_template
 from jinja_markdown import MarkdownExtension
 from datetime import datetime
 from waitress import serve
+import json
+import jinja2
 
+# Default puzzle directory may be overridden with env. variable
+puzzle_path = os.environ.get('PUZZLE_PATH') or "coding_challenge"
+
+# puzzle_path + templates directory are both scanned for jinja content
 app = Flask(__name__)
 app.jinja_env.add_extension(MarkdownExtension)
+my_loader = jinja2.ChoiceLoader([
+        app.jinja_loader, jinja2.FileSystemLoader([puzzle_path]),
+    ])
+app.jinja_loader = my_loader
+
+# config.json found in root of puzzle path.
+config_file = os.path.join(puzzle_path, "config.json")
+with open(config_file, encoding="utf-8") as infile:
+    puzzle_data = json.load(infile)
+answers = puzzle_data["answers"]
 
 accept_new_answers = True
-answers = {
-    "1": ["(-107,35)", "(-107, 35)"],
-    "2": ["495"],
-    "3": ["711"],
-    "4": ["3732"],
-    "5": ["37"],
-    "6": ["1177"],
-}
 players = []
 scores = {}
 
+def get_puzzle_description(puzzle_number):
+    return puzzle_data['descriptions_filepattern'] % int(puzzle_number)
+
+def get_puzzle_input(puzzle_number):
+    return puzzle_data['inputs_filepattern'] % int(puzzle_number)
+
+# Extract list of puzzles based on configured answers. They don't even have to be consecutive...
+def get_puzzle_range():
+    result = [int(x) for x in answers.keys()]
+    result.sort()
+    return result
+
 @app.route("/")
 def home():
-    puzzle_list=os.listdir("templates/puzzles")
     name = request.cookies.get('userID')
-    return render_template("index.html", username=name, puzzles=puzzle_list)
+    return render_template("index.html", username=name, puzzles=get_puzzle_range())
 
 @app.route('/login')
 def index():
@@ -79,11 +98,11 @@ def myscore():
 @app.route("/puzzle/<number>")
 def puzzle(number):
     name = request.cookies.get('userID')
-    return render_template("puzzle.html", username=name, puzzle_number=number)
+    return render_template("puzzle.html", username=name, puzzle_number=number, puzzle_description=get_puzzle_description(number))
 
 @app.route("/puzzleinput/<number>")
 def puzzle_input(number):
-    return render_template("puzzleinput.html", puzzle_number=number)
+    return render_template("puzzleinput.html", puzzle_input=get_puzzle_input(number))
 
 @app.route("/submitanswer/<number>", methods = ['POST'])
 def submit_answer(number):

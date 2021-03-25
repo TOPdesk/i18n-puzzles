@@ -8,8 +8,8 @@
 
 <h1>Puzzles</h1>
 <ul>
-{% for puzzle in puzzles|sort %}
-<li><a href="{{ '/puzzle/%s'%puzzle[7:8] }}">{{ puzzle[0:8] }}</a></li>
+{% for puzzle_index in puzzles|sort %}
+<li><a href="{{ '/puzzle/%d'%puzzle_index }}">{{ 'Puzzle%02d'%puzzle_index }}</a></li>
 {% endfor %}
 </ul>
 

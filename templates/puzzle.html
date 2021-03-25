@@ -4,7 +4,7 @@
 {% block content %}
 {% if username is not none %}
 {% markdown %}
-{% include "puzzles/Puzzle0" + puzzle_number +".md" %}
+{% include puzzle_description %}
 {% endmarkdown %}
 Get your puzzle input <b><a href="{{ '/puzzleinput/%s'%puzzle_number }}">here</a></b>
 
