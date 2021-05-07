@@ -1,6 +1,4 @@
-A travel itinerary for a trip around the world.
-
-each day...
+# A trip around the world.
 
 The novel ['Around the world in 80 days' by Jules Verne](https://www.gutenberg.org/cache/epub/103/pg103.txt) tells the story of Phileas Fogg, an eccentric Englishman who speedruns a trip around the world following a daring bet. He is accompanied by his servant Passepartout. The book was published in 1872. Like every good science fiction author, Jules Verne took ideas from the cutting edge of science at the time, and worked it into a thrilling story. A noticeable effect of time differences was a new thing, made possible by the mechanization of transport. Here is an excerpt from the book, where we see Passepartout being completely baffled by this effect: 
 

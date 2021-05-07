@@ -1,3 +1,5 @@
+# Length limits on messaging platforms
+
 The venerable SMS system uses a message limit of 160 bytes[^1]. This was designed so that a message could fit in exactly one packet, thus being really cheap and fast to handle on first-generation mobile phone networks. Although the approach makes sense for technical reasons, it unfairly penalizes people who use non-latin (russian, greek, japanese) alphabets - in most encodings, they need more bytes per character than latin alphabets.
 
 Twitter used to have a character limit of 140 characters[^2] (nowadays increased to 280). But this limit is a limitation by design, to emphasize the concise and ephemeral nature of the platform. It's not a technical limitation. So the designers of twitter set the limit at 140 `characters`, NOT the number of bytes.
