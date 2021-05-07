@@ -4,10 +4,10 @@ Here we'll look at what such a password system could look like.
 
 The IT department of a ficticious company named "TOPlap" has decided to introduce new, unicode-based password requirements. These criteria are as follows.
 
-- at least 4 characters, maxiumum 12 characters
+- a length of at least 4 and at most 12
 - at least one digit
-- at least one uppercase letter (examples: A or Ĳ)
-- at least one lowercase letter (examples: a or ŷ)
+- at least one uppercase letter (with or without accents, examples: A or Ĳ)
+- at least one lowercase letter (with or without accents, examples: a or ŷ)
 - at least one 'special' character, that is neither a digit nor part of the standard, unaccented 26-letter alphabet (examples: Ű, æ or ẞ)
 
 Given this [test input](./test-input):
