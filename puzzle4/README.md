@@ -25,7 +25,7 @@ The novel ['Around the world in 80 days' by Jules Verne](https://www.gutenberg.o
 
 Those time differences lead to a major plot twist. Go read the book if you want to know how...
 
-Suppose you follow a similar round-the-world itinerary. This itinerary is your puzzle [input](./input) The input lists a sequence of departures and arrivals, starting from London, taking you around the world, and back again to London. You travel from place to place by airplane or high-speed train. Each step also lists the name of the continent, to help you with any hiatus in your knowledge of topography. As is the habit of airlines and travel agencies, all arrival and departure times are printed in *local time*. 
+Suppose you follow a similar round-the-world itinerary. This itinerary is your puzzle [input](./input). The input lists a sequence of departures and arrivals, starting from London, taking you around the world, and back again to London. You travel from place to place by airplane or high-speed train. Each step also lists the name of the continent, to help you with any hiatus in your knowledge of topography. As is the habit of airlines and travel agencies, all arrival and departure times are printed in *local time*. 
 
 Write a program that calculates the *total travel time* in minutes, of the input itinerary. How many minutes would you be spending inside a train or airplane?
 
@@ -51,7 +51,7 @@ Arrival:   Europe/London                  16:52
 Note that on the trip from Paris to Adelaide, your arrival is on a day after the departure. It's also possible to have an arrival at '-1 day' if you cross the date line and your timing is right.
 
 * From London to Paris, the trip appears to take 1:59 hours but Paris is one hour ahead. The trip from London to Paris takes 59 minutes.
-* From Paris to Adelaide, the trip appears to take 29:27 hours (note that we're arriving the next day). Adelaide is 9:30 hours ahead (note that australia is enjoying daylight savings time in this season), so the trip takes 19:57 hours or 1197 minutes
+* From Paris to Adelaide, the trip appears to take 29:27 hours (note that we're arriving the next day). Adelaide is 9:30 hours ahead (note that Australia is enjoying daylight savings time in this season), so the trip takes 19:57 hours or 1197 minutes
 * From Adelaide to Santiago, we appear to arrive 44 minutes before we depart, but Santiago is 13:30 hours behind Adelaide. So the travel time is 12:46 hours or 766 minutes. (Note that both Austrialia and Chile are enjoying daylight savings time).
 * Toronto is actually 2 hours behind Santiago. So our apparent trip of 8:37 hours actually takes 10:37 hours or 637 minutes.
 * The return to London appears to take 12:04 hours, but London is 4 hours ahead. So the trip actually takes 8:04 hours or 484 minutes. Note that Toronto just entered daylight savings time in the night of March 8 2020.
