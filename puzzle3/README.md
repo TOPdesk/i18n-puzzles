@@ -28,7 +28,7 @@ rdj4XcHŔB
 * The fourth has no lowercase
 * The fifth has no 'special' character
 * The sixth has no digit
-* The seventh and eighth are passwords are valid
+* The seventh and eighth passwords are valid
 
 The IT department decided to do a little research on how well people handle these requirements. So they ask all the people at the company to choose a password, and then the IT department checks how often they manage to meet the password requirements correctly.
 
