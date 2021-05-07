@@ -2,9 +2,7 @@ The venerable SMS system uses a message limit of 160 bytes[^1]. This was designe
 
 Twitter used to have a character limit of 140 characters[^2] (nowadays increased to 280). But this limit is a limitation by design, to emphasize the concise and ephemeral nature of the platform. It's not a technical limitation. So the designers of twitter set the limit at 140 `characters`, NOT the number of bytes.
 
-You have to write a program that checks whether messages are valid as SMS and / or valid as (old-style) tweet. Your puzzle input is a list of messages in different languages, one on each line, *in UTF-8 format*. 
-
-Count the number of messages (again, in UTF-8) that can only be sent on one platform. They must be either valid as tweet or valid as SMS message, but not both.
+Write a program that checks whether messages are valid as SMS and / or valid as (old-style) tweet. Your puzzle [input](./input) is a list of messages in different languages, one on each line, *in UTF-8 format*.  Your answer should be the number of messages that can only be sent on one platform, i.e. they must be either valid as tweet or valid as SMS message, but not both.
 
 *Line endings are excluded from bytes count as well as character count.*
 
@@ -23,6 +21,8 @@ Han hade icke träffat Märta sedan Arvidsons middag, och det hade gått nära e
 * The fourth message is 147 bytes long and 141 characters long. It's only suitable as an SMS message, and should count towards the total.
 
 The solution to the test input would then be `2`
+
+------
 
 [^1]: This is a simplification. The reality is complicated, see https://www.twilio.com/docs/glossary/what-sms-character-limit
 [^2]: Also more complicated than described here, see: https://developer.twitter.com/en/docs/counting-characters

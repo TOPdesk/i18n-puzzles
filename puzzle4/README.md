@@ -31,7 +31,7 @@ Suppose you follow a similar round-the-world itinerary. This itinerary is your p
 
 Write a program that calculates the *total travel time* in minutes, of the input itinerary. How many minutes would you be spending inside a train or airplane?
 
-For example, take the following test input:
+For example, take the following [test input](./test-input):
 
 ```
 Departure: Europe/London                  10:00  Mar 04, 2020
