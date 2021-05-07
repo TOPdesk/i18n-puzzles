@@ -1,6 +1,6 @@
-== TOPdesk challenges in i18n and l11n ==
+# Challenges in i18n and l11n
 
-Welcome to the TOPdesk challenges in internationalization and localization.
+Welcome to the [TOPdesk](https://www.topdesk.com/) challenges in internationalization and localization.
 
 This is a series of programming challenges. For each puzzle, you have to write a program that analyzes the given input file, and produces an answer. The answer always consists of a single exact number or string.
 
