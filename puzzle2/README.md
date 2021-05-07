@@ -1,6 +1,6 @@
 # Detecting gravitational waves
 
-Scientists have built a gravitional wave detector, with detector stations all around the world.
+Scientists have built a gravitational wave detector, with detector stations all around the world.
 Unfortunately, the gravitational waves are extremely faint, and often, what the sensors pick up is just noise.
 Scientist say that the measure can only be trusted if four or more detector stations around the world are triggered at precisely the same time. Only then can we say with a reasonable degree of certainty that we've picked up a gravitational wave.
 
