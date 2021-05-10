@@ -8,18 +8,18 @@ The IT department of a ficticious company named "TOPlap" has decided to introduc
 
 - a length of at least 4 and at most 12
 - at least one digit
-- at least one uppercase letter (with or without accents, examples: A or Ĳ)
+- at least one uppercase letter (with or without accents, examples: A or Ż)
 - at least one lowercase letter (with or without accents, examples: a or ŷ)
-- at least one 'special' character, that is neither a digit nor part of the standard, unaccented 26-letter alphabet (examples: Ű, æ or ẞ)
+- at least one accented character (examples: Ű, ù or ř)
 
 Given this [test input](./test-input):
 ```
 d9Ō
-IgbZKq3JXrejiPN7Btŷ
+uwI.E9GvrnWļbzO
 žö2á
-719ŅTOIY8NU
-mAcpKI6Sr
-dgxuPfHYýmAB
+Ģ952WVF4
+?O6JQf
+xi~Rťfsa
 rdj4XcHŔB
 71äĜ3
 ```
@@ -28,7 +28,7 @@ rdj4XcHŔB
 * The second is too long
 * The third has no uppercase
 * The fourth has no lowercase
-* The fifth has no 'special' character
+* The fifth has no accented character
 * The sixth has no digit
 * The seventh and eighth passwords are valid
 
