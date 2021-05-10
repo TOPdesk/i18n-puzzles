@@ -39,9 +39,9 @@ Departure: Europe/Paris                   10:42  Mar 05, 2020
 Arrival:   Australia/Adelaide             16:09  +1 day
 
 Departure: Australia/Adelaide             19:54  Mar 06, 2020
-Arrival:   America/Santiago               19:10  
+Arrival:   America/Argentina/Buenos_Aires 19:10  
 
-Departure: America/Santiago               06:06  Mar 07, 2020
+Departure: America/Argentina/Buenos_Aires 06:06  Mar 07, 2020
 Arrival:   America/Toronto                14:43  
 
 Departure: America/Toronto                04:48  Mar 08, 2020
@@ -52,8 +52,8 @@ Note that on the trip from Paris to Adelaide, your arrival is on a day after the
 
 * From London to Paris, the trip appears to take 1:59 hours but Paris is one hour ahead. The trip from London to Paris takes 59 minutes.
 * From Paris to Adelaide, the trip appears to take 29:27 hours (note that we're arriving the next day). Adelaide is 9:30 hours ahead (note that Australia is enjoying daylight savings time in this season), so the trip takes 19:57 hours or 1197 minutes
-* From Adelaide to Santiago, we appear to arrive 44 minutes before we depart, but Santiago is 13:30 hours behind Adelaide. So the travel time is 12:46 hours or 766 minutes. (Note that both Austrialia and Chile are enjoying daylight savings time).
-* Toronto is actually 2 hours behind Santiago. So our apparent trip of 8:37 hours actually takes 10:37 hours or 637 minutes.
+* From Adelaide to Buenos Aires, we appear to arrive 44 minutes before we depart, but Buenos Aires is 13:30 hours behind Adelaide. So the travel time is 12:46 hours or 766 minutes.
+* Toronto is actually 2 hours behind Buenos Aires. So our apparent trip of 8:37 hours actually takes 10:37 hours or 637 minutes.
 * The return to London appears to take 12:04 hours, but London is 4 hours ahead. So the trip actually takes 8:04 hours or 484 minutes. Note that Toronto just entered daylight savings time in the night of March 8 2020.
 
 The sum of travel time in minutes is then 3143 minutes, so `3143` would be the answer to the test-input.
