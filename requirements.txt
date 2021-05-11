@@ -1,3 +1,4 @@
 flask
 jinja_markdown
 waitress
+flask-sqlalchemy

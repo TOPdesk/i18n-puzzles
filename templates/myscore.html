@@ -6,8 +6,8 @@
 <p>Solved puzzles:</p>
 {% if myscore %}
 <ul>
-    {% for key, value in myscore.items() %}
-        <li>Number {{key}}, submitted at {{value}}</li>
+    {% for item in myscore %}
+        <li>Number {{item.puzzle_id}}, submitted at {{item.timestamp}}</li>
     {% endfor %}
 </ul>
 {% else %}
