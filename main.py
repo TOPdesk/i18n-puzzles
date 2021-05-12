@@ -1,6 +1,7 @@
 import os, os.path
 from flask import Flask, request, make_response, render_template
-from jinja_markdown import MarkdownExtension
+from flask.helpers import send_from_directory
+import jinja_markdown
 from datetime import datetime
 from sqlalchemy.sql.expression import select
 from waitress import serve
@@ -16,7 +17,8 @@ db_uri = os.environ.get('DATABASE_URL') or 'sqlite:///scores.sqlite'
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
-app.jinja_env.add_extension(MarkdownExtension)
+jinja_markdown.EXTENSIONS.append('pymdownx.extra') # To enable footnotes
+app.jinja_env.add_extension(jinja_markdown.MarkdownExtension)
 my_loader = jinja2.ChoiceLoader([
         app.jinja_loader, jinja2.FileSystemLoader([puzzle_path]),
     ])
@@ -109,6 +111,13 @@ def puzzle(number):
 
 @app.route("/puzzleinput/<number>")
 def puzzle_input(number):
+    return render_template("puzzleinput.html", puzzle_input=get_puzzle_input(number))
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
+def static(number):
     return render_template("puzzleinput.html", puzzle_input=get_puzzle_input(number))
 
 @app.route("/submitanswer/<number>", methods = ['POST'])
