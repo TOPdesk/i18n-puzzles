@@ -10,14 +10,14 @@ Go through the list, and find an instance where four signals were recorded at th
 For example, in the list of six timestamps below (your [test-input](./test-input)):
 
 ```
-2019-06-05T08:15:00.000-04:00
-2019-06-05T14:15:00.000+02:00
-2019-06-05T17:45:00.000+05:30
-2019-06-05T05:15:00.000-07:00
-2011-02-01T09:15:00.000-03:00
-2011-02-01T09:15:00.000-05:00
+2019-06-05T08:15:00-04:00
+2019-06-05T14:15:00+02:00
+2019-06-05T17:45:00+05:30
+2019-06-05T05:15:00-07:00
+2011-02-01T09:15:00-03:00
+2011-02-01T09:15:00-05:00
 ```
 
 In this list, the first four recordings took place at the same time, in different time zones. 08:15 in timezone GMT-04:00 (Toronto summer time) happened at the same time as 14:15 in timezone GMT+02:00 (Paris summer time). The last two recordings were both made at 09:15, but they actually differ by two hours.
 
-Your puzzle [input](./input) is a complete list of recordings. Find the time that a gravitational wave was recorded in four or more places at the same time. Give your final answer in the exact same format, but with the timezone offset normalised to '+00:00'. In the example above, the answer corresponding to the four contemporary recordings would be `2019-06-05T12:15:00.000+00:00`
+Your puzzle [input](./input) is a complete list of recordings. Find the time that a gravitational wave was recorded in four or more places at the same time. Give your final answer in the exact same format, but with the timezone offset normalised to '+00:00'. In the example above, the answer corresponding to the four contemporary recordings would be `2019-06-05T12:15:00+00:00`
