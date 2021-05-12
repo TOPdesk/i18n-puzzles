@@ -12,7 +12,7 @@ The IT department of a ficticious company named "TOPlap" has decided to introduc
 - at least one lowercase letter (with or without accents, examples: a or ŷ)
 - at least one accented character (examples: Ű, ù or ř)
 
-Given this [test input](./test-input):
+Given this `test input`:
 ```
 d9Ō
 uwI.E9GvrnWļbzO
@@ -34,4 +34,4 @@ rdj4XcHŔB
 
 The IT department decided to do a little research on how well people handle these requirements. So they ask all the people at the company to choose a password, and then the IT department checks how often they manage to meet the password requirements correctly.
 
-Your [input](./input) is a list of passwords, one on each line. Write a program that checks if each password meets the requirements. Your answer should be the number of passwords that are valid. In the test input given above, the number of valid passwords is '2'.
+Your `input` is a list of passwords, one on each line. Write a program that checks if each password meets the requirements. Your answer should be the number of passwords that are valid. In the test input given above, the number of valid passwords is '2'.

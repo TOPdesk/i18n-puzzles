@@ -25,11 +25,11 @@ The novel ['Around the world in 80 days' by Jules Verne](https://www.gutenberg.o
 
 Those time differences lead to a major plot twist. Go read the book if you want to know how...
 
-Suppose you follow a similar round-the-world itinerary. This itinerary is your puzzle [input](./input). The input lists a sequence of departures and arrivals, starting from London, taking you around the world, and back again to London. You travel from place to place by airplane or high-speed train. Each step also lists the name of the continent, to help you with any hiatus in your knowledge of topography. As is the habit of airlines and travel agencies, all arrival and departure times are printed in *local time*. 
+Suppose you follow a similar round-the-world itinerary. This itinerary is your puzzle `input`. It lists a sequence of departures and arrivals, starting from London, taking you around the world, and back again to London. You travel from place to place by airplane or high-speed train. Each step also lists the name of the continent, to help you with any hiatus in your knowledge of topography. As is the habit of airlines and travel agencies, all arrival and departure times are printed in *local time*. 
 
 Write a program that calculates the *total travel time* in minutes, of the input itinerary. How many minutes would you be spending inside a train or airplane?
 
-For example, take the following [test input](./test-input):
+For example, take the following `test input`:
 
 ```
 Departure: Europe/London                  10:00  Mar 04, 2020
