@@ -46,8 +46,6 @@ db.create_all()
 
 accept_new_answers = True
 
-players = []
-
 def get_puzzle_description(puzzle_number):
     return puzzle_data['descriptions_filepattern'] % int(puzzle_number)
 
@@ -72,10 +70,9 @@ def index():
 @app.route('/setuser', methods = ['POST'])
 def setuser():
     name = request.form['nm']
-    if len(name) < 3 or len(name) > 20 or not name.isalnum() or name.upper() in (player.upper() for player in players):
+    if len(name) < 3 or len(name) > 20 or not name.isalnum():
         return make_response(render_template('logindenied.html', hideusername=True))
     else:
-        players.append(name)
         resp = make_response(render_template('loginconfirm.html', hideusername=True))
         resp.set_cookie('userID', name, secure=True)
         return resp
@@ -99,17 +96,9 @@ def stop():
     accept_new_answers = False
     return render_template("confirm.html", hideusername=True)
 
-@app.route('/resetscoresandplayers')
-def reset():
-    players = []
-    # scores can not be reset this way...
-    return render_template("confirm.html", hideusername=True)
-
 @app.route('/myscore')
 def myscore():
     name = request.cookies.get('userID')
-    if (name not in players):
-        players.append(name)
     myscore = db.session.query(Score).filter(Score.player_name == name)
     return render_template("myscore.html", username=name, myscore=myscore)
 
@@ -131,8 +120,6 @@ def submit_answer(number):
     answered = request.form['answer_input']
 
     if (answered in answers.get(number)):
-        if (name not in players):
-            players.append(name)
         score = Score(name, number)
         db.session.add(score)
         db.session.commit()
