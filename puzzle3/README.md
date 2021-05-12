@@ -16,11 +16,11 @@ Given this `test input`:
 ```
 d9Ō
 uwI.E9GvrnWļbzO
-žö2á
-Ģ952WVF4
+ž-2á
+Ģ952W*F4
 ?O6JQf
 xi~Rťfsa
-rdj4XcHŔB
+r_j4XcHŔB
 71äĜ3
 ```
 
