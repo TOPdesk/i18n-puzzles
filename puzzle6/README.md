@@ -64,7 +64,7 @@ Thus we can deduce that:
 * etc. etc.
 * the 15th word is `pugilarão`
 
-Scanning the `test-input` for words that fit in our crossword, we arrive at this solution. 
+Scanning the `test-input` for words that fit in our crossword, we can complete it like so: 
 
 ```
       |     
