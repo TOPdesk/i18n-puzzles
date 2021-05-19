@@ -15,14 +15,14 @@ You find the list of puzzles below. Follow the progress of your colleagues on th
 ### Reading & reference materials
 
 ####  Time zones 
-* Tom Scott explains the trouble with time zones: https://youtu.be/-5wpm-gesOY
-* Check time and date in any place and any moment in history: https://www.timeanddate.com/
-* JavaScript tips:
-* * https://toastui.medium.com/handling-time-zone-in-javascript-547e67aa842d
+* [Tom Scott explains the trouble with time zones](https://youtu.be/-5wpm-gesOY)
+* [Check time and date in any place and any moment in history](https://www.timeanddate.com/)
+* [A very useful collection of info on stackoverflow](https://stackoverflow.com/tags/timezone/info)
+* [Some tips specifically for JavaScript](https://toastui.medium.com/handling-time-zone-in-javascript-547e67aa842d)
 
 #### Unicode
-* Tom Scott explains why UTF-8 is awesome: https://youtu.be/MijmeoH9LT4
-* The absolute minimum every programmer should know: https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
-* https://unicode-table.com/
+* [Tom Scott explains why UTF-8 is awesome](https://youtu.be/MijmeoH9LT4)
+* [Joel Spolsky explains the absolute minimum every programmer should know, no excuses](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
+* [Useful unicode lookup table](https://unicode-table.com/)
 
-Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!
+Thanks to MartinT, MartH, JesseA and JoepW for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!
