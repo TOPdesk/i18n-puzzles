@@ -45,16 +45,16 @@ blÃ¶kt
 ......t..
 ```
 
-But, there is a catch! Something weird is going on with the dictionary. If you look closely, you see that some of the words in this dictionary appear garbled. This character soup is typical when two programs disagree about the encoding of a given piece of text. And this is exactly what happened during the compilation of this dictionary. 
+But, there is a catch! Something weird is going on with the dictionary. If you look closely, you see that some of the words in this dictionary appear garbled. This character soup is typical *when two programs disagree about the encoding of a piece of text*. And this is exactly what happened during the compilation of this dictionary. 
 
 The Japanese, whose rich set of characters has created ample opportunities for message garbling, have dubbed this phenomenon [mojibake](https://en.wikipedia.org/wiki/Mojibake). 
 
 All is not lost, however, because if the mistake is known, it could potentially be undone. In this case, there is a clear pattern.
 
-* Most of the words are stored as plain utf-8
-* For every 3rd line, the original word was encoded in utf-8 but loaded by a system that expected iso-latin-1. The resulting character mash was exported again in utf-8. 
+* The entire file is encoded as utf-8. Most words are correct with this encoding.
+* For every 3rd line, the original word was encoded in utf-8 but loaded by a system that expected iso-latin-1. The resulting character mash was stored with utf-8 encoding. 
 * The same has happened every 5th line.
-* Where the two series overlap (every 15th line), the word was doubly-miscoded.
+* Where the two series overlap (every 15th line), the word was *doubly-miscoded*.
 
 Thus we can deduce that:
 
