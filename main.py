@@ -167,6 +167,12 @@ def score_board():
 #     key, d = tup
 #     return -d["solvedcount"], d["date"]
 
+# This ensures that we reload after login
+@app.after_request
+def add_header(response):
+    response.vary = "Cookie"
+    return response
+
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8080)
     
