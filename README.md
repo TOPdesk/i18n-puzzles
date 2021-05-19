@@ -15,12 +15,13 @@ You find the list of puzzles below. Follow the progress of your colleagues on th
 ### Reading & reference materials
 
 ####  Time zones 
-* Tom Scott explains time zones: https://www.youtube.com/watch?v=-5wpm-gesOY
+* Tom Scott explains the trouble with time zones: https://youtu.be/-5wpm-gesOY
 * Check time and date in any place and any moment in history: https://www.timeanddate.com/
 * JavaScript tips:
 * * https://toastui.medium.com/handling-time-zone-in-javascript-547e67aa842d
 
 #### Unicode
+* Tom Scott explains why UTF-8 is awesome: https://youtu.be/MijmeoH9LT4
 * The absolute minimum every programmer should know: https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
 * https://unicode-table.com/
 
