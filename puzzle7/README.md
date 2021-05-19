@@ -1,8 +1,8 @@
 # The audit trail fixer
 
-"TOPlap" keeps audit-trails on all modifications made to its records. This audit trail keeps track, for example, each time you change the status of a record. Later you could run a report and find out how long this record was in a certain state.
+"TOPlap" keeps audit trails on all modifications made to its records. This audit trail keeps track, for example, each time you change the status of a record. Later you could run a report and find out how long this record was in a certain state.
 
-Now it turns out that there was a small bug in the software, that made some of the audit trail record unreliable. The report may show that a record was in state X for 1720 minutes, but actually it was only 1360 minutes. TOPlap programmer Jan Sandersz was so annoyed by this bug that he spent spare time writing a script to recalculate audit trail entries for affected customers. He called this the 'audit trail fixer' (By the way, any similarities with real persons or events are entirely coincidental).
+Now it turns out that there was a small bug in the software, that made some of the audit trails unreliable. For example, the report may show that a record was in state X for 1720 minutes, but in actuality it was only 1360 minutes. TOPlap programmer Jan Sandersz was so annoyed by this bug that he spent spare time writing a script to recalculate audit trail entries for affected customers. He called this the 'audit trail fixer' (By the way, any similarities with real persons or events are entirely coincidental).
 
 Fixing the audit trails was not simple. One major challenge was that all timestamps were kept as *local times with a GMT offset*. Unfortunately, [GMT offsets are not time zones](https://spin.atomicobject.com/2016/07/06/time-zones-offsets/). The difference between time zones and GMT offsets is subtle but important: with just a GMT offset, you can't know if you have to apply daylight savings time changes or not.
 

@@ -12,7 +12,7 @@ Why solve a single crossword puzzle, when we can write a program to solve them a
       |
 ```
 
-Each horizontal line, you need to fill in a word of the right length, that matches the letter that is already filled in. There are no constraings on the vertical lines, i.e. the vertical lines do not have to form real words (apart from the one that is already filled in). To fill in the blanks, we need to search through a dictionary of words. 
+Each horizontal line, you need to fill in a word of the right length, that matches the letter that is already filled in. There are no constraints on the vertical lines, i.e. the vertical lines do not have to form real words (apart from the one that is already filled in). To fill in the blanks, we need to search through a dictionary of words. 
 
 Your `test-input` contains two parts. The first part is a list of words. Then follows a blank line, and then the second part contains the  crossword, with periods (`.`) representing the letters that need to be filled in.
 
