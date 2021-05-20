@@ -2,11 +2,12 @@
 
 "TOPlap" keeps audit trails on all modifications made to its records. This audit trail keeps track, for example, each time you change the status of a record. Later you could run a report and find out how long this record was in a certain state.
 
-Now it turns out that there was a small bug in the software, that made some of the audit trails unreliable. For example, the report may show that a record was in state X for 1720 minutes, but in actuality it was only 1360 minutes. TOPlap programmer Jan Sandersz was so annoyed by this bug that he spent spare time writing a script to recalculate audit trail entries for affected customers. He called this the 'audit trail fixer' (By the way, any similarities with real persons or events are entirely coincidental).
+Now it turns out that there was a small bug in the software, that made some of the audit trails unreliable. For example, the report may show that a record was in state X for 1720 minutes, but in actuality it was only 1360 minutes. We are going to write a script to recalculate audit trails for affected customers.
 
-Fixing the audit trails was not simple. One major challenge was that all timestamps were kept as *local times with a GMT offset*. Unfortunately, [GMT offsets are not time zones](https://spin.atomicobject.com/2016/07/06/time-zones-offsets/). The difference between time zones and GMT offsets is subtle but important: with just a GMT offset, you can't know if you have to apply daylight savings time changes or not.
+Fixing the audit trails is not simple. One major challenge is that all timestamps are kept as *local times with a GMT offset*. Unfortunately, [GMT offsets are not time zones](https://spin.atomicobject.com/2016/07/06/time-zones-offsets/). The difference between time zones and GMT offsets is subtle but important: with just a GMT offset, you can't know if you have to apply daylight savings time changes, or not.
 
-Through a lucky coincidence, it was possible to deduce timezones in this particular scenario. You see, we know that only two customers were affected by this bug: 1. FaxSchool, the Halifax school board, and 2. El Universidad Libre de Santiago (EULS). That means that each timestamp can be one of two timezones:
+Through a lucky coincidence, it is possible to deduce timezones in this particular scenario. You see, we know that only two customers were affected by this bug: 1. FaxSchool, the Halifax school board, and 2. El Universidad Libre de Santiago (EULS). That means that each timestamp can be one of two timezones:
+
 1. America/Halifax, which is GMT-4 (~ Nov-Mar) or GMT-3 (~ Apr-Oct)
 2. America/Santiago[^1], which is GMT-3 (~ Sep-Mar) or GMT-4 (~ Apr-Aug)
 
@@ -51,5 +52,7 @@ In the end, here are the corrected times corresponding to the `test input`:
 Now to arrive at your final answer, do the following.
 For each record, take just the hour in local time and multiply it by the line number.
 Sum all these products, this is your result. For the test-input above, the answer is: 18 * 1 + 11 * 2 + 21 * 3 + 23 * 4 + 22 * 5 + 15 * 6 + 10 * 7 + 16 * 8 + 7 * 9 + 21 * 10 = `622`
+
+--------
 
 [^1]: For more fun with daylight savings time, read up on [Time in Chile](https://en.wikipedia.org/wiki/Time_in_Chile)
