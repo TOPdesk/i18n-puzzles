@@ -17,7 +17,9 @@ db_uri = os.environ.get('DATABASE_URL') or 'sqlite:///scores.sqlite'
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
-jinja_markdown.EXTENSIONS.append('pymdownx.extra') # To enable footnotes
+# Temporarily disabled - there is a caching bug in the footnotes extension
+# jinja_markdown.EXTENSIONS.append('pymdownx.extra') # To enable footnotes
+
 app.jinja_env.add_extension(jinja_markdown.MarkdownExtension)
 my_loader = jinja2.ChoiceLoader([
         app.jinja_loader, jinja2.FileSystemLoader([puzzle_path]),
