@@ -9,7 +9,7 @@ In the following `test-input`, the park is 7 units wide and 13 units high. Note 
 ```
  ⚘   ⚘ 
   ⸫   ⸫
-    💩  
+🌲   💩  
      ⸫⸫
  🐇    💩
 ⸫    ⸫ 
