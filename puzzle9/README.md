@@ -6,7 +6,7 @@ This phrase 'nine eleven' also reflects the American habit of writing a date wit
 
 The event of 'nine eleven' had a great emotional impact on people all over the globe. It would be possible to study this impact through diary entries written at the time. For this puzzle, we have a collection of diary entries from the past 100 years (between 1-1-1920 and 1-1-2020). Unfortunately, the diary pages are jumbled up. Each diary author has his own habit for the way they write dates. A date like 12-01-05 would be interpreted in UK English as 12 jan 2005, but in American English as 1 dec 2005. Or it could mean: 5 Jan 2012, or even: 1 May 2012. But, at least each person is consistent, the same person always writes a date the same way.
 
-Diary entries are indexed by their apparent date. Considering the [test input](./test-input):
+Diary entries are indexed by their apparent date. Considering the `test input`:
 
 ```
 16-05-18: Margot, Frank
@@ -27,8 +27,6 @@ By a process of elimination, we can figure out that
 This means that both Peter and Margot wrote about the events of 'nine-eleven' in their diary, but not Frank.
 
 To arrive at your answer, sort the names alphabetically and join them with spaces. The answer to the test-input is `Margot Peter`
-
-Get your [puzzle input](./input) here. 
 
 By the way: writing year, then month, then day, may seem counter-intuitive, but it has certain advantages. For example, a plain text sort of dates written this way, will order dates neatly as expected. Writing dates this way is the standard set by [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601). But in spite of standardization efforts, date formats remain a source of confusion.
 
