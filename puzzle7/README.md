@@ -51,7 +51,7 @@ In the end, here are the corrected times corresponding to the `test input`:
 
 Now to arrive at your final answer, do the following.
 For each record, take just the hour in local time and multiply it by the line number.
-Sum all these products, this is your result. For the test-input above, the answer is: 18 * 1 + 11 * 2 + 21 * 3 + 23 * 4 + 22 * 5 + 15 * 6 + 10 * 7 + 16 * 8 + 7 * 9 + 21 * 10 = `622`
+Sum all these products, this is your result. For the test-input above, the answer is: 18 * 1 + 11 * 2 + 21 * 3 + 23 * 4 + 22 * 5 + 15 * 6 + 10 * 7 + 16 * 8 + 7 * 9 + 21 * 10 = `866`
 
 --------
 
