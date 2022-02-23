@@ -2,7 +2,7 @@ import os, os.path
 from flask import Flask, request, make_response, render_template
 from flask.helpers import send_from_directory
 import jinja_markdown
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy.sql.expression import select
 from waitress import serve
 import json
@@ -140,12 +140,9 @@ def submit_answer(number):
 
     return make_response(render_template(template, puzzle_number=number, username=name))
 
-@app.route("/scoreboard")
-def score_board():
+def transform_leaderboard(results):
     matrix = {}
     leaderboard = {}
-    results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).all()
-
     for r in results:
         if r.player_name not in matrix:
             matrix[r.player_name] = {}
@@ -161,8 +158,19 @@ def score_board():
             else:
                 stars += " "
         leaderboard[player_name] = {"solvedcount": count, "stars": stars }
-    
-    # items = sorted(results, key = sort_count_date)
+    return leaderboard
+
+@app.route("/scoreboard")
+def score_board_recent():
+    six_months_ago = datetime.now() - timedelta(weeks=26)
+    results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).filter(Score.timestamp > six_months_ago).all()
+    leaderboard = transform_leaderboard(results)
+    return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=leaderboard.items())
+
+@app.route("/scoreboard/all")
+def score_board_all():
+    results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).all()
+    leaderboard = transform_leaderboard(results)
     return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=leaderboard.items())
 
 # def sort_count_date(tup):
