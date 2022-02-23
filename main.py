@@ -84,8 +84,6 @@ def setuser():
 @app.route('/getuser')
 def getuser():
     name = request.cookies.get('userID')
-    scores = db.session.query(Score).filter(Score.player_name == name)
-    print(scores)
     return '<p>username: '+name+'</p>'
 
 @app.route('/startacceptinganswers')
@@ -153,10 +151,10 @@ def transform_leaderboard(results):
         count = 0
         for puzzle_id in get_puzzle_range():
             if puzzle_id in solved:
-                stars += "*"
+                stars += "<span class=\"solved\">*</span>"
                 count += 1
             else:
-                stars += " "
+                stars += "<span class=\"unsolved\">*</span>"
         leaderboard[player_name] = {"solvedcount": count, "stars": stars }
     return leaderboard
 

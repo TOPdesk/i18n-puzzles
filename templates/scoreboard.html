@@ -17,7 +17,7 @@
 {% for value in leaderboard %}
 <tr>
   <td> {{ value[0] }} </td>
-  <td>{{ value[1]["stars"] }} <td>
+  <td>{{ value[1]["stars"] | safe }} <td>
 </tr>
 {% endfor %}
 </table>

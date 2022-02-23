@@ -18,3 +18,11 @@ em {
 	color: green;
 	text-shadow: green 0 0 2px;
 }
+
+.solved {
+	color: blue;
+}
+
+.unsolved {
+	color: lightgray;
+}
