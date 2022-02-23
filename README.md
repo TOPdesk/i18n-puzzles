@@ -1,8 +1,10 @@
 Python with Flask and Jinja frontend for code challenge.
 
+Set PUZZLE_PATH to the path where the puzzles can be found.
+
 To run in dev mode:
 ```
-$ FLASK_APP=main.py FLASK_ENV=development flask run --port 5000
+$ PUZZLE_PATH=i18n-challenges FLASK_APP=main.py FLASK_ENV=development flask run --port 5000
 ```
 
 To run in prod mode (port 8080):
