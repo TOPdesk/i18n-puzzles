@@ -9,9 +9,14 @@ code {
 	background: lightgrey;
 }
 
+pre {
+	white-space: pre-wrap;
+}
+
 div.highlight {
 	background: lightgrey;
 	border: 1px solid grey;
+	padding: 0 1rem;
 }
 
 em {
