@@ -46,7 +46,8 @@ class Score(db.Model):
         self.player_name = player_name
         self.puzzle_id = puzzle_id
 
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 accept_new_answers = True
 
