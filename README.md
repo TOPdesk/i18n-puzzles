@@ -8,7 +8,7 @@ Each puzzle includes a test-input, that is fully worked out with the answer give
 
 You may use any programming language you like. You are encouraged to use libraries as much as possible (in fact, most challenges are hard to solve without some library). You may use any online resources as much as you like, there is a useful reading list below.
 
-The puzzles should not be too hard. Most take less than 10 minutes for an experienced programmer. If it takes you more than 1 hour to solve, then let it go for a while and continue with the next puzzle. 
+The puzzles should not be too hard. Most take less than 30 minutes for an experienced programmer. If it takes you more than 1 hour to solve, then let it go for a while and continue with the next puzzle. 
 
 You find the list of puzzles below. Follow the progress of your colleagues on the [scoreboard](/scoreboard). Good luck!
 
@@ -25,4 +25,4 @@ You find the list of puzzles below. Follow the progress of your colleagues on th
 * [Joel Spolsky explains the absolute minimum every programmer should know, no excuses](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 * [Useful unicode lookup table](https://unicode-table.com/)
 
-Thanks to MartinT, MartH, JesseA and JoepW for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!
+Thanks to Martin Tichem, Mart Hagenaars, Jesse van Asse, Barni Szabo and Joep Wijers for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!

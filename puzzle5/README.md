@@ -1,6 +1,6 @@
 # Don't step in it...
 
-It's a pleasant day for a walk in the park. The park in our neighborhood is lush and lovely. There are trees, flowers, and even some rabbits live here. Many people come here to walk their dog. Unfortuntaly, the owners don't always clean up after their pets. It's nearly impossible to walk through this park without stepping in *a pile of poo*.
+It's a pleasant day for a walk in the park. The park in our neighborhood is lush and lovely. There are trees, flowers, and even some rabbits live here. Many people come here to walk their dog. Unfortunately, the owners don't always clean up after their pets. It's nearly impossible to walk through this park without stepping in *a pile of poo*.
 
 You walk through the dog park in a diagonal line, going 1 down and 2 right with each step. The way the local geometry works is a bit weird (probably due to the nearby gravitational wave research station), so when you reach the right side of the park, *you wrap around* to the left side. 
 
