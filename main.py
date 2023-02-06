@@ -8,6 +8,7 @@ from waitress import serve
 import json
 import jinja2
 from flask_sqlalchemy import SQLAlchemy
+from flask import send_from_directory
 
 # Default puzzle directory may be overridden with env. variable
 puzzle_path = os.environ.get('PUZZLE_PATH') or "coding_challenge"
@@ -112,14 +113,11 @@ def puzzle(number):
 
 @app.route("/puzzleinput/<number>")
 def puzzle_input(number):
-    return render_template("puzzleinput.html", puzzle_input=get_puzzle_input(number))
+    return send_from_directory(puzzle_path, get_puzzle_input(number), mimetype="text/plain")
 
 @app.route('/static/<path:path>')
 def send_static(path):
     return send_from_directory('static', path)
-
-def static(number):
-    return render_template("puzzleinput.html", puzzle_input=get_puzzle_input(number))
 
 @app.route("/submitanswer/<number>", methods = ['POST'])
 def submit_answer(number):
