@@ -25,4 +25,4 @@ You find the list of puzzles below. Follow the progress of your colleagues on th
 * [Joel Spolsky explains the absolute minimum every programmer should know, no excuses](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 * [Useful unicode lookup table](https://unicode-table.com/)
 
-Thanks to Martin Tichem, Mart Hagenaars, Jesse van Asse, Barni Szabo and Joep Wijers for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!
+Thanks to Martin Tichem, Mart Hagenaars, Jesse van Assen, Barni Szabo, Dániel Urbán and Joep Weijers for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!
