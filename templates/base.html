@@ -2,14 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>{% block title %}{% endblock %}</title>
+<title>{{ title }} - {% block title %}{% endblock %}</title>
+<link rel="icon" type="image/png" href="/static/favicon.png"/>
 {% if autorefresh %}
-<meta http-equiv="refresh" content="10">
+<meta http-equiv="refresh" content="10"/>
 {% endif %}
-<link rel="stylesheet" href="/static/base.css"></link>
+<link rel="stylesheet" href="/static/base.css"/>
 </head>
 <body>
-<h1><a href="/">TOPdesk Speed Coding Challenge</a></h1>
+<h1><a href="/">{{ title }}</a></h1>
 {% if not hideusername %}
 {% if username is not none %}
 <p>Playing as: {{username}}, <a href="/myscore">my score</a> <a href="/scoreboard">scoreboard</a></p>

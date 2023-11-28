@@ -52,6 +52,10 @@ with app.app_context():
 
 accept_new_answers = True
 
+@app.context_processor
+def inject_title():
+    return dict(title=puzzle_data["title"])
+
 def get_puzzle_description(puzzle_number):
     return puzzle_data['descriptions_filepattern'] % int(puzzle_number)
 
