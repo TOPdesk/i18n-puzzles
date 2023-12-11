@@ -1,8 +1,6 @@
-# Challenges in i18n and l11n
+Welcome to the [TOPdesk](https://www.topdesk.com/) internationalization puzzles.
 
-Welcome to the [TOPdesk](https://www.topdesk.com/) challenges in internationalization and localization.
-
-This is a series of programming challenges. For each puzzle, you have to write a program that analyzes the given input file, and produces an answer. The answer always consists of a single exact number or string. Each puzzle introduces a new concept that has to do with internationalization. You will learn more and more as you go. 
+This is a series of programming puzzles. For each puzzle, write a program that analyzes the input file, and produces a result. Submit the result and find out immediately if you solved the puzzle correctly. Each puzzle introduces a new concept that has to do with internationalization. You will learn more and more as you go. 
 
 Each puzzle includes a test-input, that is fully worked out with the answer given. If your program can give the correct answer on the test input, then it will usually work for the real input as well. 
 
@@ -11,6 +9,8 @@ You may use any programming language you like. You are encouraged to use librari
 The puzzles should not be too hard. Most take less than 30 minutes for an experienced programmer. If it takes you more than 1 hour to solve, then let it go for a while and continue with the next puzzle. 
 
 You find the list of puzzles below. Follow the progress of your colleagues on the [scoreboard](/scoreboard). Good luck!
+
+For questions, contact me at [m.van.iersel@topdesk.com](mailto:m.van.iersel@topdesk.com)
 
 ### Reading & reference materials
 
@@ -25,4 +25,4 @@ You find the list of puzzles below. Follow the progress of your colleagues on th
 * [Joel Spolsky explains the absolute minimum every programmer should know, no excuses](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 * [Useful unicode lookup table](https://unicode-table.com/)
 
-Thanks to Martin Tichem, Mart Hagenaars, Jesse van Assen, Barni Szabo, Dániel Urbán and Joep Weijers for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration!
+Thanks to Martin Tichem, Mart Hagenaars, Jesse van Assen, Barni Szabo, Dániel Urbán and Joep Weijers for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration. 
