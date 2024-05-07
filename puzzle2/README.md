@@ -22,6 +22,10 @@ In this list, the first four recordings took place at the same time, in differen
 
 Your puzzle `input` is a complete list of recordings. Find the time that a gravitational wave was recorded in four or more places at the same time. Give your final answer in the exact same format, but with the timezone offset normalised to '+00:00'. In the example above, the answer corresponding to the four contemporary recordings would be `2019-06-05T12:15:00+00:00`
 
+### Reading & reference materials
+
+* [UTC and GMT on Wikipedia](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)
+
 -------
 
 [^1]: To be fair, there are a lot of challenges in detecting gravitational waves. Timezone problems are the least of it. Watch this if you want to know more: https://www.youtube.com/watch?v=iphcyNWFD10

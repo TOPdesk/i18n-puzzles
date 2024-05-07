@@ -8,8 +8,8 @@ Fixing the audit trails is not simple. One major challenge is that all timestamp
 
 Through a lucky coincidence, it is possible to deduce timezones in this particular scenario. You see, we know that only two customers were affected by this bug: 1. FaxSchool, the Halifax school board, and 2. El Universidad Libre de Santiago (EULS). That means that each timestamp can be one of two timezones:
 
-1. America/Halifax, which is GMT-4 (~ Nov-Mar) or GMT-3 (~ Apr-Oct)
-2. America/Santiago[^1], which is GMT-3 (~ Sep-Mar) or GMT-4 (~ Apr-Aug)
+1. America/Halifax, which is GMT-4 (North hemisphere summer) or GMT-3 (North hemisphere winter)
+2. America/Santiago[^1], which is GMT-3 (South hemisphere winter) or GMT-4 (South hemisphere summer)
 
 Based on the time of year and GMT offset, we can make a pretty good guess.
 
@@ -52,6 +52,11 @@ In the end, here are the corrected times corresponding to the `test input`:
 Now to arrive at your final answer, do the following.
 For each record, take just the hour in local time and multiply it by the line number.
 Sum all these products, this is your result. For the test-input above, the answer is: 18 * 1 + 11 * 2 + 21 * 3 + 23 * 4 + 22 * 5 + 15 * 6 + 10 * 7 + 16 * 8 + 7 * 9 + 21 * 10 = `866`
+
+### Reading & reference materials
+
+* [IANA Time Zone database](https://www.iana.org/time-zones) is the official source of time zone data used by libraries and operating systems. It's not easy to parse the information here, but it's good to know where it all comes from.
+* [timeanddate.com](https://www.timeanddate.com/) is incredibly useful. You can find all kinds of useful time-related information, such as when daylight savings time starts and ends for each time zone around the world.
 
 --------
 
