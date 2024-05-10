@@ -32,3 +32,11 @@ k2lp79ąqV
 * The seventh and eighth passwords are valid
 
 Your `input` is a list of passwords, one on each line. Write a program that checks if each password meets the requirements. Your answer should be the number of passwords that are valid. In the test input given above, the number of valid passwords is '2'.
+
+### Reading & reference materials
+
+* [Comparing Unicode codepoints](https://en.wikipedia.org/wiki/Unicode_equivalence) can be tricky, but it's essential when searching in texts
+* [What on Earth is Unicode Normalization?](https://towardsdatascience.com/what-on-earth-is-unicode-normalization-56c005c55ad0)
+* [Unicode normalization forms](https://unicode.org/reports/tr15/#Norm_Forms) is a way for handling character composition (eg. &ijlig;, &auml;, &odblac;)
+
+------

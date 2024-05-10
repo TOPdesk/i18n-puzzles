@@ -24,7 +24,8 @@ Your puzzle `input` is a complete list of recordings. Find the time that a gravi
 
 ### Reading & reference materials
 
-* [UTC and GMT on Wikipedia](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)
+* [UTC on Wikipedia](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), a time standard
+* [UTC offset](https://en.wikipedia.org/wiki/UTC_offset), how the same moment in time has different time reading around the globe
 
 -------
 
