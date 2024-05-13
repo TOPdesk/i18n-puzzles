@@ -1,14 +1,13 @@
 # Unicode passwords redux
 
-Following up from puzzle 3, the IT department at "TOPlap" didn't like the results of their first study,
-and decided to try out a different password policy.
+Following up from puzzle 3, the IT department at "TOPlap" didn't like the results of their first study. They decided to try out a different password policy.
 
 The new requirements are as follows:
 
 - a length of at least 4 and at most 12
 - at least one digit
-- at least one accented or unaccented vowel (a, e, i, o, u) (examples: i, Á or ë)
-- at least one accented or unaccented consonant, examples: s, ñ or ŷ)
+- at least one accented or unaccented vowel (a, e, i, o, u) (examples: i, Á or ë). Note: we use the definition of vowel according to English.
+- at least one accented or unaccented consonant, examples: s, ñ or ŷ
 - no double letters in any form. Ignoring accents and case, letters should not recur. For example, in 'Daniël' no letters recur. But in 'Drieën' the 'e' occurs twice, one time with accent and one time without. 'Uusi' is out because the 'u' occurs twice, first uppercase and then lowercase.
 
 Given this `test input`:
