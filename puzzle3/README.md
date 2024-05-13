@@ -10,7 +10,7 @@ The IT department of a ficticious company named "TOPlap" has decided to introduc
 - at least one digit
 - at least one uppercase letter (with or without accents, examples: A or Ż)
 - at least one lowercase letter (with or without accents, examples: a or ŷ)
-- at least one accented character (examples: Ű, ù or ř)
+- at least one character that is outside the standard 7-bit ASCII character set (examples: Ű, ù or ř)
 
 Given this `test input`:
 ```
@@ -28,7 +28,7 @@ r_j4XcHŔB
 * The second is too long
 * The third has no uppercase
 * The fourth has no lowercase
-* The fifth has no accented character
+* The fifth has no character outside the 7-bit ASCII character set
 * The sixth has no digit
 * The seventh and eighth passwords are valid
 
@@ -38,7 +38,10 @@ Your `input` is a list of passwords, one on each line. Write a program that chec
 
 ### Reading & reference materials
 
-* [Attributes of a Unicode character](https://en.wikipedia.org/wiki/Unicode_character_property) on Wikipedia, or check your favourite string manipulation library's API
-* [Finding characters by attributes](https://www.regular-expressions.info/unicode.html) using a regular expressions is achievable in a lot of programming environments
+* [ASCII vs Unicode](https://thisvsthat.io/ascii-vs-unicode)
+* [How to check if a letter is uppercase in Java](https://www.tutorialspoint.com/check-whether-a-character-is-uppercase-or-not-in-java)
+* [How to check if a letter is uppercase in JavaScript](https://stackoverflow.com/a/31415820/3306) - and give the linked answer an upvote because it's more correct than the accepted answer.
+
+Each programming language is slightly different, use Google to find similar articles for yours.
 
 ------
