@@ -32,7 +32,7 @@ The solution to the test input would then be 0 + 13 + 7 + 11 totalling `31`
 
 ### Reading & reference materials
 
-* [Joel Spolsky explains the absolute minimum every programmer should know, no excuses](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
+* [The absolute minimum every programmer should know about Unicode, no excuses](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 
 ------
 
