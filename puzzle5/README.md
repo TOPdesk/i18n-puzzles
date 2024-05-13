@@ -48,5 +48,6 @@ Your real `input` is a similar rectangular park, only much larger. If you walk i
 
 * [Different Unicode encodings](https://en.wikipedia.org/wiki/Comparison_of_Unicode_encodings) exists, but your programming environment's text/string/character API will help you
 * [Surrogate pairs](https://stackoverflow.com/questions/5903008/what-is-a-surrogate-pair-in-java) extend the character set beyond the Unicode characters
+* [Useful unicode lookup table](https://symbl.cc/)
 
 ------

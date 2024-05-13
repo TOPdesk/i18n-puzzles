@@ -35,8 +35,11 @@ Your `input` is a list of passwords, one on each line. Write a program that chec
 
 ### Reading & reference materials
 
-* [Comparing Unicode codepoints](https://en.wikipedia.org/wiki/Unicode_equivalence) can be tricky, but it's essential when searching in texts
 * [What on Earth is Unicode Normalization?](https://towardsdatascience.com/what-on-earth-is-unicode-normalization-56c005c55ad0)
 * [Unicode normalization forms](https://unicode.org/reports/tr15/#Norm_Forms) is a way for handling character composition (eg. &ijlig;, &auml;, &odblac;)
+* [Comparing Unicode codepoints](https://en.wikipedia.org/wiki/Unicode_equivalence) can be tricky, but it's essential when searching in texts
+* [Attributes of a Unicode character](https://en.wikipedia.org/wiki/Unicode_character_property) on Wikipedia, or check your favourite string manipulation library's API
+* [Finding characters by attributes](https://www.regular-expressions.info/unicode.html) using a regular expressions is achievable in a lot of programming environments
+* [Useful unicode lookup table](https://unicode-table.com/)
 
 ------

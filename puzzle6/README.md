@@ -84,6 +84,7 @@ Your `input` contains another list of words, followed by an empty line, followed
 ### Reading & reference materials
 
 * [What is UTF-8?](https://en.wikipedia.org/wiki/UTF-8)
+* [Tom Scott explains why UTF-8 is awesome](https://youtu.be/MijmeoH9LT4)
 * [Experiment with encoding](https://onlinetools.com/utf8/convert-utf8-to-bytes) while learning how bytes can become characters, codepoints
 
 ------

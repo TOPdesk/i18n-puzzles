@@ -56,7 +56,7 @@ Sum all these products, this is your result. For the test-input above, the answe
 ### Reading & reference materials
 
 * [IANA Time Zone database](https://www.iana.org/time-zones) is the official source of time zone data used by libraries and operating systems. It's not easy to parse the information here, but it's good to know where it all comes from.
-* [timeanddate.com](https://www.timeanddate.com/) is incredibly useful. You can find all kinds of useful time-related information, such as when daylight savings time starts and ends for each time zone around the world.
+* [timeanddate.com](https://www.timeanddate.com/) is incredibly useful. You can find all kinds of useful time-related information, such as when daylight savings time starts and ends for each time zone around the world. You can find DST-corrected time and date at any instant in history. 
 
 --------
 

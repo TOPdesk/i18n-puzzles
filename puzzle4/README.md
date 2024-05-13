@@ -60,7 +60,10 @@ The sum of travel time in minutes is then 3143 minutes, so `3143` would be the a
 
 ### Reading & reference materials
 
-* [Time zones](https://www.timeanddate.com/time/zones/) has interesting properties, familiarize yourself with it 
+* [Time zones](https://www.timeanddate.com/time/zones/) has interesting properties, familiarize yourself with it.
 * [What defines a time zone?](https://w3c.github.io/timezone/#tz-definition) 
+* [A very useful collection of info on stackoverflow](https://stackoverflow.com/tags/timezone/info)
+* [Some tips specifically for JavaScript](https://toastui.medium.com/handling-time-zone-in-javascript-547e67aa842d)
+* [Tom Scott explains the trouble with time zones](https://youtu.be/-5wpm-gesOY)
 
 ------
