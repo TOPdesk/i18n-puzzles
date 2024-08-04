@@ -8,5 +8,6 @@
 		"6": ["1177"]
 	},
 	"descriptions_filepattern": "puzzles/Puzzle%02d.md",
-	"inputs_filepattern": "puzzle_inputs/Puzzle%02dInput.txt"
+	"inputs_filepattern": "puzzle_inputs/Puzzle%02dInput.txt",
+	"title": "TOPdesk Coding Challenge"
 }
