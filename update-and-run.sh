@@ -9,7 +9,7 @@ docker tag ${IMAGE}:${VERSION} ${IMAGE}
 docker stop i18n-challenges
 docker rm i18n-challenges
 docker run \
-	-p 5000:8080 \
+	-p 5000:5000 \
 	-v /srv/code-challenge:/srv/code-challenge \
 	-d \
 	--restart always \

@@ -177,7 +177,7 @@ def add_header(response):
     return response
 
 if __name__ == "__main__":
-    serve(app, host="0.0.0.0", port=8080)
+    serve(app, host="0.0.0.0", port=5000)
 
 # we do not import anything (would be circular) - just make sure module is loaded https://flask.palletsprojects.com/en/1.1.x/patterns/packages/
 import auth
