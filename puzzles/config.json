@@ -1,0 +1,5 @@
+{
+	"descriptions_filepattern": "puzzle%d/README.md",
+	"inputs_filepattern": "puzzle%d/input",
+	"title": "Internationalization Puzzles"
+}

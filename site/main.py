@@ -31,7 +31,10 @@ app.jinja_loader = my_loader
 config_file = os.path.join(puzzle_path, "config.json")
 with open(config_file, encoding="utf-8") as infile:
     puzzle_data = json.load(infile)
-answers = puzzle_data["answers"]
+
+answers_file = os.path.join(puzzle_path, "answers.json")
+with open(answers_file, encoding="utf-8") as infile:
+    answers = json.load(infile)
 
 db = SQLAlchemy(app)
 

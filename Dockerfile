@@ -10,8 +10,8 @@ COPY site/static /usr/src/app/static/
 COPY site/main.py /usr/src/app/
 COPY puzzles /usr/src/puzzles
 
-# To make sure config.json exists. It's not included in the repo
-COPY puzzles/config.json /usr/src/puzzles/
+# To make sure answers.json exists. It's not included in the repo
+COPY puzzles/answers.json /usr/src/puzzles/
 
 VOLUME /srv/code-challenge
 
