@@ -1,6 +1,10 @@
 # About this repository
 
-# Running the site
+This repo contains Internationalization puzzles used for a workshop on internationalization and localization at TOPdesk.
+ 
+This site is hosted at https://i18n-puzzles.com
+
+# Developer info
 
 ## Local Development
 
