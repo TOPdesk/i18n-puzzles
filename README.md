@@ -1,17 +1,30 @@
-Welcome to the [TOPdesk](https://www.topdesk.com/) internationalization puzzles.
+# About this repository
 
-This is a series of **programming puzzles**. For each puzzle, write a program that analyzes the `input` file, and produces a result. Submit the result and find out immediately if you solved the puzzle correctly. Each puzzle introduces a new concept that has to do with internationalization. You will learn more and more as you go. 
+# Running the site
 
-Each puzzle includes a `test-input`, that is fully worked out with the answer given. If your program can give the correct answer on the test input, then it will usually work for the real input as well. 
+## Local Development
 
-You may use any programming language you like. You are encouraged to use libraries as much as possible (in fact, most challenges are hard to solve without some library). Each puzzle comes with a list of reading materials and online tools that can help you to understand the problem. You may use Google or Wikipedia to find more information - this is not an exam!
+Python with Flask and Jinja frontend for code challenge.
 
-The puzzles should not be too hard. Most take less than 30 minutes for an experienced programmer. If it takes you more than 1 hour to solve, then let it go for a while and continue with the next puzzle. 
+Originally developed by Martin Tichem for the Beta Banenmarkt. 
+Amended by Martijn van Iersel to make it suitable for the internationalization puzzles (i18n-puzzles.com)
 
-You find the list of puzzles below. Follow the progress of your colleagues on the [scoreboard](/scoreboard). Good luck!
+Set PUZZLE_PATH to the path where the puzzles can be found.
 
-For questions, contact me at [m.van.iersel@topdesk.com](mailto:m.van.iersel@topdesk.com)
+To run in dev mode:
+```
+$ PUZZLE_PATH=puzzles FLASK_APP=site/main.py FLASK_DEBUG=true flask run --port 5000
+```
 
-### Acknowledgements
+## Production mode
 
-Thanks to Martin Tichem, Mart Hagenaars, Jesse van Assen, Barni Szabo, Dániel Urbán and Joep Weijers for code, testing and feedback. Thanks to the [advent of code](https://adventofcode.com/) project for inspiration. 
+To run in prod mode (port 8080):
+```
+$ python main.py
+```
+
+Docker deployment to https://hub.docker.com/orgs/topdesk/repositories:
+```
+$ docker build -t topdesk/betabanenmarkt-coding-challenge .
+$ docker push topdesk/betabanenmarkt-coding-challenge
+```
