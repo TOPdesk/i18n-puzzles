@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Scoreboard{% endblock %}
+
+{% block content %}
+<h1>Leader board</h1>
+
+<p>
+<a href="/scoreboard">Recent</a>
+<a href="/scoreboard/all">All</a>
+</p>
+
+<table style="width:100%;border: 1px solid black;">
+<tr style="border: 1px solid black;">
+  <th>Name</th>
+  <th>Solved</th>
+</tr>
+{% for value in leaderboard %}
+<tr>
+  <td> {{ value[0] }} </td>
+  <td>{{ value[1]["stars"] | safe }} <td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

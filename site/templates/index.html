@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% markdown %}
+{% include "README.md" %}
+{% endmarkdown %}
+
+<h1>Puzzles</h1>
+<ul>
+{% for puzzle_index in puzzles|sort %}
+<li><a href="{{ '/puzzle/%d'%puzzle_index }}">{{ 'Puzzle%02d'%puzzle_index }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

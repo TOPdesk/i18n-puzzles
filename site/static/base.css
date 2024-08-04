@@ -1,0 +1,33 @@
+html {
+	font-family:courier;
+	max-width:800px;
+	margin: auto;
+}
+
+code {
+	display: inline-block;
+	background: lightgrey;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+div.highlight {
+	background: lightgrey;
+	border: 1px solid grey;
+	padding: 0 1rem;
+}
+
+em {
+	color: green;
+	text-shadow: green 0 0 2px;
+}
+
+.solved {
+	color: blue;
+}
+
+.unsolved {
+	color: lightgray;
+}

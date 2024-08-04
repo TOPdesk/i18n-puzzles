@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}TOPdesk Answer {{puzzle_number}}{% endblock %}
+
+{% block content %}
+<p><b>That is not the correct answer.</b></p>
+
+<a href="{{ '/puzzle/%s'%puzzle_number }}">Go back to puzzle</a>
+{% endblock %}

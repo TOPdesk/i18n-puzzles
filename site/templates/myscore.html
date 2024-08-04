@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}TOPdesk My score{% endblock %}
+
+{% block content %}
+
+<p>Solved puzzles:</p>
+{% if myscore %}
+<ul>
+    {% for item in myscore %}
+        <li>Number {{item.puzzle_id}}, submitted at {{item.timestamp}}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No puzzles solved yet.</p>
+{% endif %}
+
+{% endblock %}

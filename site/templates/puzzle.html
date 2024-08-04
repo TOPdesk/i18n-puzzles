@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Puzzle {{puzzle_number}}{% endblock %}
+
+{% block content %}
+{% if username is not none %}
+{% markdown %}
+{% include puzzle_description %}
+{% endmarkdown %}
+Get your puzzle input <b><a href="{{ '/puzzleinput/%s'%puzzle_number }}">here</a></b>
+
+<form action = "{{ '/submitanswer/%s'%puzzle_number }}" method = "POST">
+    <p><h3>Your answer:</h3></p>
+    <p>
+        <input type = 'text' name = 'answer_input'/>
+        <input type = 'submit' value = 'Submit'/>
+    </p>
+ </form>
+{% else %}
+<p>Please log in first.</p>
+{% endif %}
+
+{% endblock %}
