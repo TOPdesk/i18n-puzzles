@@ -1,5 +1,5 @@
 import os, os.path
-from flask import Flask, request, make_response, render_template
+from flask import Flask, request, make_response, render_template, abort, send_from_directory
 from flask.helpers import send_from_directory
 import jinja_markdown
 from datetime import datetime, timedelta
@@ -8,8 +8,10 @@ from waitress import serve
 import json
 import jinja2
 from flask_sqlalchemy import SQLAlchemy
-from flask import send_from_directory
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user, LoginManager
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Default puzzle directory may be overridden with env. variable
 puzzle_path = os.environ.get('PUZZLE_PATH') or "coding_challenge"
@@ -39,17 +41,26 @@ with open(answers_file, encoding="utf-8") as infile:
 
 db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(id):
+    user = db.session.get(User, int(id))
+    return user
+
 from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
 
 class Score(db.Model):
     id = Column('id', Integer, primary_key = True)
     player_name = Column(String(100)) # Deprecated - will be removed
-    user_id = Column('user_id', Integer, ForeignKey('user.id'), nullable = False)
+    user_id = Column('user_id', Integer, ForeignKey('users.id'), nullable = False)
     puzzle_id = Column(Integer)
     timestamp = Column(DateTime, default=func.now())
 
-    def __init__(self, player_name, puzzle_id):
-        self.player_name = player_name
+    def __init__(self, user_id, player_name, puzzle_id):
+        self.user_id = user_id
+        self.player_name = player_name # TODO: deprecated
         self.puzzle_id = puzzle_id
 
 class User(UserMixin, db.Model):
@@ -61,8 +72,6 @@ class User(UserMixin, db.Model):
 
 with app.app_context():
     db.create_all()
-
-accept_new_answers = True
 
 @app.context_processor
 def inject_title():
@@ -82,53 +91,17 @@ def get_puzzle_range():
 
 @app.route("/")
 def home():
-    name = request.cookies.get('userID')
-    return render_template("index.html", username=name, puzzles=get_puzzle_range())
-
-@app.route('/login')
-def index():
-    return render_template('login.html', hideusername=True)
-
-@app.route('/setuser', methods = ['POST'])
-def setuser():
-    name = request.form['nm']
-    if len(name) < 3 or len(name) > 20 or not name.isalnum():
-        return make_response(render_template('logindenied.html', hideusername=True))
-    else:
-        resp = make_response(render_template('loginconfirm.html', hideusername=True))
-        resp.set_cookie('userID', name, secure=True)
-        return resp
-
-@app.route('/getuser')
-def getuser():
-    # TODO -> userId is no longer equal to username
-    name = request.cookies.get('userID')
-    return '<p>username: ' + name + '</p>'
-
-@app.route('/startacceptinganswers')
-def start():
-    global accept_new_answers
-    accept_new_answers = True
-    return render_template("confirm.html", hideusername=True)
-
-@app.route('/stopacceptinganswers')
-def stop():
-    global accept_new_answers
-    accept_new_answers = False
-    return render_template("confirm.html", hideusername=True)
+    return render_template("index.html", puzzles=get_puzzle_range())
 
 @app.route('/myscore')
 def myscore():
-    # TODO -> player_name no longer exsists
-    name = request.cookies.get('userID')
-    myscore = db.session.query(Score).filter(Score.player_name == name)
-    return render_template("myscore.html", username=name, myscore=myscore)
+    userId = current_user.id
+    myscore = db.session.query(Score).filter(Score.user_id == userId)
+    return render_template("myscore.html", myscore=myscore)
 
 @app.route("/puzzle/<number>")
 def puzzle(number):
-    # TODO -> userId is no longer equal to username
-    name = request.cookies.get('userID')
-    return render_template("puzzle.html", username=name, puzzle_number=number, puzzle_description=get_puzzle_description(number))
+    return render_template("puzzle.html", puzzle_number=number, puzzle_description=get_puzzle_description(number))
 
 @app.route("/puzzleinput/<number>")
 def puzzle_input(number):
@@ -140,14 +113,15 @@ def send_static(path):
 
 @app.route("/submitanswer/<number>", methods = ['POST'])
 def submit_answer(number):
-    if (not accept_new_answers):
-        return render_template("stop.html")
-
-    name = request.cookies.get('userID')
+    if current_user.is_anonymous:
+        abort(401)
+    
+    userId = current_user.id
+    name = current_user.username
     answered = request.form['answer_input']
 
     if (answered in answers.get(number)):
-        score = Score(name, number)
+        score = Score(userId, name, number)
         db.session.add(score)
         db.session.commit()
         template = "answercorrect.html"
@@ -204,4 +178,6 @@ def add_header(response):
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=8080)
-    
+
+# we do not import anything (would be circular) - just make sure module is loaded https://flask.palletsprojects.com/en/1.1.x/patterns/packages/
+import auth

@@ -1,0 +1,12 @@
+<div>
+	{% if current_user.is_authenticated %}
+	  Playing as: {{ current_user.username }}
+	  <a href="/myscore">my score</a>
+	  <a class="btn btn-primary" href="{{ url_for('logout') }}">Logout</a>
+	{% else %}
+	  No user set,
+    {# <a class="btn btn-primary" href="{{ url_for('oauth2_authorize', provider='microsoft') }}">Login with Microsoft</a> #}
+	  <a class="btn btn-primary" href="{{ url_for('oauth2_authorize', provider='github') }}">Login with GitHub</a>
+	{% endif %}
+	<a href="/scoreboard">scoreboard</a>
+</div>

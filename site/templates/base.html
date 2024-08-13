@@ -10,14 +10,13 @@
 <link rel="stylesheet" href="/static/base.css"/>
 </head>
 <body>
+
+{% include 'flash.html' %}
+
 <h1><a href="/">{{ title }}</a></h1>
-{% if not hideusername %}
-{% if username is not none %}
-<p>Playing as: {{username}}, <a href="/myscore">my score</a> <a href="/scoreboard">scoreboard</a></p>
-{% else %}
-<p>No user set, <a href="/login">login here</a>. <a href="/scoreboard">scoreboard</a></p>
-{% endif %}
-{% endif %}
+
+{% include 'auth.html' %}
+
 <article>
 {% block content %}
 {% endblock %}

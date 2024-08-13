@@ -1,0 +1,11 @@
+{# Showing flash messages, a generic flask system for feedback #}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+	<div class="alert alert-info" role="alert">
+	{% for message in messages %}
+	{{ message }}<br>
+	{% endfor %}
+	</div>
+{% endif %}
+{% endwith %}
