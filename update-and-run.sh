@@ -14,5 +14,6 @@ docker run \
 	-d \
 	--restart always \
 	--name i18n-challenges \
+	--env-file ./.env \
 	amarillion/i18n-challenges
 
