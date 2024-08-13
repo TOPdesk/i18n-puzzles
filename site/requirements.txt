@@ -2,3 +2,4 @@ flask
 jinja_markdown
 waitress
 flask-sqlalchemy
+flask_login

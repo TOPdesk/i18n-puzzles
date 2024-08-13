@@ -9,6 +9,7 @@ import json
 import jinja2
 from flask_sqlalchemy import SQLAlchemy
 from flask import send_from_directory
+from flask_login import UserMixin
 
 # Default puzzle directory may be overridden with env. variable
 puzzle_path = os.environ.get('PUZZLE_PATH') or "coding_challenge"
@@ -38,17 +39,25 @@ with open(answers_file, encoding="utf-8") as infile:
 
 db = SQLAlchemy(app)
 
-from sqlalchemy import Column, DateTime, String, Integer, func
+from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
 
 class Score(db.Model):
     id = Column('id', Integer, primary_key = True)
-    player_name = Column(String(100))
+    player_name = Column(String(100)) # Deprecated - will be removed
+    user_id = Column('user_id', Integer, ForeignKey('user.id'), nullable = False)
     puzzle_id = Column(Integer)
     timestamp = Column(DateTime, default=func.now())
 
     def __init__(self, player_name, puzzle_id):
         self.player_name = player_name
         self.puzzle_id = puzzle_id
+
+class User(UserMixin, db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    external_id = db.Column(db.String(64), nullable=False, unique=True)
+    username = db.Column(db.String(64), nullable=False)
+    # email = db.Column(db.String(64), nullable=True)
 
 with app.app_context():
     db.create_all()
@@ -92,8 +101,9 @@ def setuser():
 
 @app.route('/getuser')
 def getuser():
+    # TODO -> userId is no longer equal to username
     name = request.cookies.get('userID')
-    return '<p>username: '+name+'</p>'
+    return '<p>username: ' + name + '</p>'
 
 @app.route('/startacceptinganswers')
 def start():
@@ -109,12 +119,14 @@ def stop():
 
 @app.route('/myscore')
 def myscore():
+    # TODO -> player_name no longer exsists
     name = request.cookies.get('userID')
     myscore = db.session.query(Score).filter(Score.player_name == name)
     return render_template("myscore.html", username=name, myscore=myscore)
 
 @app.route("/puzzle/<number>")
 def puzzle(number):
+    # TODO -> userId is no longer equal to username
     name = request.cookies.get('userID')
     return render_template("puzzle.html", username=name, puzzle_number=number, puzzle_description=get_puzzle_description(number))
 
@@ -145,6 +157,7 @@ def submit_answer(number):
     return make_response(render_template(template, puzzle_number=number, username=name))
 
 def transform_leaderboard(results):
+    # TODO -> player_name no longer exists
     matrix = {}
     leaderboard = {}
     for r in results:
@@ -166,6 +179,7 @@ def transform_leaderboard(results):
 
 @app.route("/scoreboard")
 def score_board_recent():
+    # TODO -> player_name no longer exists
     six_months_ago = datetime.now() - timedelta(weeks=26)
     results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).filter(Score.timestamp > six_months_ago).all()
     leaderboard = transform_leaderboard(results)
@@ -173,6 +187,7 @@ def score_board_recent():
 
 @app.route("/scoreboard/all")
 def score_board_all():
+    # TODO -> player_name no longer exists
     results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).all()
     leaderboard = transform_leaderboard(results)
     return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=leaderboard.items())
