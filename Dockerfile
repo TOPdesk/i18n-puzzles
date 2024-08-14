@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY site/templates /usr/src/app/templates/
 COPY site/static /usr/src/app/static/
-COPY site/auth.py site/main.py /usr/src/app/
+COPY site/main.py /usr/src/app/
 COPY puzzles /usr/src/puzzles
 
 # To make sure answers.json exists. It's not included in the repo
