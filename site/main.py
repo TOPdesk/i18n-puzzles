@@ -23,6 +23,11 @@ db_uri = os.environ.get('DATABASE_URL') or 'sqlite:///scores.sqlite'
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 
+# url_for() should generate links with https protocol: https://stackoverflow.com/a/26636880/3306
+# Otherwise oauth provider will report callback url mismatch
+# Note that app.config['PREFERRED_URL_SCHEME'] does not do what you expect: https://stackoverflow.com/a/43288737/3306
+PREFERRED_URL_SCHEME = os.environ.get('PREFERRED_URL_SCHEME') or 'http'
+
 # Temporarily disabled - there is a caching bug in the footnotes extension
 # jinja_markdown.EXTENSIONS.append('pymdownx.extra') # To enable footnotes
 
@@ -218,6 +223,7 @@ def oauth2_authorize(provider):
     qs = urlencode({
         'client_id': provider_data['client_id'],
         'redirect_uri': url_for('oauth2_callback', provider=provider,
+                                _scheme=PREFERRED_URL_SCHEME,
                                 _external=True),
         'response_type': 'code',
         'scope': ' '.join(provider_data['scopes']),
@@ -259,6 +265,7 @@ def oauth2_callback(provider):
         'code': request.args['code'],
         'grant_type': 'authorization_code',
         'redirect_uri': url_for('oauth2_callback', provider=provider,
+                                _scheme=PREFERRED_URL_SCHEME,
                                 _external=True),
     }, headers={'Accept': 'application/json'})
     if response.status_code != 200:
