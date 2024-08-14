@@ -4,3 +4,4 @@ waitress
 flask-sqlalchemy
 flask_login
 python-dotenv
+requests
