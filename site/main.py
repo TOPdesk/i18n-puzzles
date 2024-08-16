@@ -124,11 +124,16 @@ def transform_leaderboard(results):
     matrix = {}
     leaderboard = {}
     for r in results:
-        if r.username not in matrix:
-            matrix[r.username] = {}
-        matrix[r.username][r.puzzle_id] = True
+        if r.user_id not in matrix:
+            matrix[r.user_id] = {}
+        matrix[r.user_id][r.puzzle_id] = True
+
+    usernames = {}
+    for r in results:
+        if r.user_id not in usernames:
+            usernames[r.user_id] = r.username
     
-    for username, solved in matrix.items():
+    for user_id, solved in matrix.items():
         stars = ""
         count = 0
         for puzzle_id in get_puzzle_range():
@@ -137,13 +142,13 @@ def transform_leaderboard(results):
                 count += 1
             else:
                 stars += "<span class=\"unsolved\">*</span>"
-        leaderboard[username] = {"solvedcount": count, "stars": stars }
+        leaderboard[user_id] = {"username": usernames[user_id], "solvedcount": count, "stars": stars }
     return leaderboard
 
 @app.route("/scoreboard")
 def score_board_recent():
     six_months_ago = datetime.now() - timedelta(weeks=26)
-    results = (db.session.query(Score.puzzle_id, User.username)
+    results = (db.session.query(Score.puzzle_id, Score.user_id, User.username)
                .join(User, Score.user_id == User.id)
                .order_by(User.username, Score.puzzle_id)
                .filter(Score.timestamp > six_months_ago)
@@ -153,7 +158,7 @@ def score_board_recent():
 
 @app.route("/scoreboard/all")
 def score_board_all():
-    results = (db.session.query(Score.puzzle_id, User.username)
+    results = (db.session.query(Score.puzzle_id, Score.user_id, User.username)
                .join(User, Score.user_id == User.id)
                .order_by(User.username, Score.puzzle_id)
                .all())
