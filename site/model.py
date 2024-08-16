@@ -8,7 +8,6 @@ db = SQLAlchemy()
 
 class Score(db.Model):
     id = Column('id', Integer, primary_key = True)
-    player_name = Column(String(100)) # Deprecated - will be removed
     user_id = Column('user_id', Integer, ForeignKey('users.id'), nullable = False)
     puzzle_id = Column(Integer)
     timestamp = Column(DateTime, default=func.now())

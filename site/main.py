@@ -121,15 +121,14 @@ def submit_answer(number):
     return make_response(render_template(template, puzzle_number=number, username=name))
 
 def transform_leaderboard(results):
-    # TODO -> player_name no longer exists
     matrix = {}
     leaderboard = {}
     for r in results:
-        if r.player_name not in matrix:
-            matrix[r.player_name] = {}
-        matrix[r.player_name][r.puzzle_id] = True
+        if r.username not in matrix:
+            matrix[r.username] = {}
+        matrix[r.username][r.puzzle_id] = True
     
-    for player_name, solved in matrix.items():
+    for username, solved in matrix.items():
         stars = ""
         count = 0
         for puzzle_id in get_puzzle_range():
@@ -138,21 +137,26 @@ def transform_leaderboard(results):
                 count += 1
             else:
                 stars += "<span class=\"unsolved\">*</span>"
-        leaderboard[player_name] = {"solvedcount": count, "stars": stars }
+        leaderboard[username] = {"solvedcount": count, "stars": stars }
     return leaderboard
 
 @app.route("/scoreboard")
 def score_board_recent():
-    # TODO -> player_name no longer exists
     six_months_ago = datetime.now() - timedelta(weeks=26)
-    results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).filter(Score.timestamp > six_months_ago).all()
+    results = (db.session.query(Score.puzzle_id, User.username)
+               .join(User, Score.user_id == User.id)
+               .order_by(User.username, Score.puzzle_id)
+               .filter(Score.timestamp > six_months_ago)
+               .all())
     leaderboard = transform_leaderboard(results)
     return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=leaderboard.items())
 
 @app.route("/scoreboard/all")
 def score_board_all():
-    # TODO -> player_name no longer exists
-    results = db.session.query(Score).order_by(Score.player_name, Score.puzzle_id).all()
+    results = (db.session.query(Score.puzzle_id, User.username)
+               .join(User, Score.user_id == User.id)
+               .order_by(User.username, Score.puzzle_id)
+               .all())
     leaderboard = transform_leaderboard(results)
     return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=leaderboard.items())
 
