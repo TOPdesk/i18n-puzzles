@@ -18,4 +18,20 @@ OAUTH2_PROVIDERS = {
         },
         'scopes': ['user:email'],
     },
+
+    # Google OAuth 2.0 documentation:
+    # https://developers.google.com/identity/protocols/oauth2/web-server#httprest
+    'google': {
+        'client_id': os.environ.get('GOOGLE_CLIENT_ID'),
+        'client_secret': os.environ.get('GOOGLE_CLIENT_SECRET'),
+        'authorize_url': 'https://accounts.google.com/o/oauth2/auth',
+        'token_url': 'https://accounts.google.com/o/oauth2/token',
+        'userinfo': {
+            'url': 'https://www.googleapis.com/oauth2/v3/userinfo',
+			'id': lambda json: json['sub'],
+			'displayName': lambda json: json['name']
+            #'email': lambda json: json['email'], -> needs scope: https://www.googleapis.com/auth/userinfo.email
+        },
+        'scopes': ['https://www.googleapis.com/auth/userinfo.profile'],
+    },
 }
