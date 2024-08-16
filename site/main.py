@@ -1,17 +1,19 @@
-import os, os.path
-from flask import Flask, request, redirect, current_app, session, make_response, render_template, abort, send_from_directory, flash, url_for
-from flask.helpers import send_from_directory
-import jinja_markdown
-from datetime import datetime, timedelta
-from waitress import serve
+import os
 import json
 import jinja2
+import jinja_markdown
+from flask import Flask, request, redirect, current_app, session, make_response, render_template, abort, send_from_directory, flash, url_for
+from flask.helpers import send_from_directory
+from datetime import datetime, timedelta
+from waitress import serve
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, current_user, LoginManager, login_user, logout_user
+from flask_login import current_user, LoginManager, login_user, logout_user
 from dotenv import load_dotenv
 import secrets
 import requests
 from urllib.parse import urlencode
+from model import db, User, Score
+from oauth import OAUTH2_PROVIDERS
 
 load_dotenv()
 
@@ -21,7 +23,9 @@ db_uri = os.environ.get('DATABASE_URL') or 'sqlite:///scores.sqlite'
 
 # puzzle_path + templates directory are both scanned for jinja content
 app = Flask(__name__)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+db.init_app(app)
 
 # url_for() should generate links with https protocol: https://stackoverflow.com/a/26636880/3306
 # Otherwise oauth provider will report callback url mismatch
@@ -46,7 +50,7 @@ answers_file = os.path.join(puzzle_path, "answers.json")
 with open(answers_file, encoding="utf-8") as infile:
     answers = json.load(infile)
 
-db = SQLAlchemy(app)
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -55,27 +59,6 @@ login_manager.init_app(app)
 def load_user(id):
     user = db.session.get(User, int(id))
     return user
-
-from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
-
-class Score(db.Model):
-    id = Column('id', Integer, primary_key = True)
-    player_name = Column(String(100)) # Deprecated - will be removed
-    user_id = Column('user_id', Integer, ForeignKey('users.id'), nullable = False)
-    puzzle_id = Column(Integer)
-    timestamp = Column(DateTime, default=func.now())
-
-    def __init__(self, user_id, player_name, puzzle_id):
-        self.user_id = user_id
-        self.player_name = player_name # TODO: deprecated
-        self.puzzle_id = puzzle_id
-
-class User(UserMixin, db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    external_id = db.Column(db.String(64), nullable=False, unique=True)
-    username = db.Column(db.String(64), nullable=False)
-    # email = db.Column(db.String(64), nullable=True)
 
 with app.app_context():
     db.create_all()
@@ -173,30 +156,6 @@ def score_board_all():
     leaderboard = transform_leaderboard(results)
     return render_template("scoreboard.html", hideusername=True, autorefresh=True, leaderboard=leaderboard.items())
 
-
-# TODO... this the right place?
-app.secret_key = os.environ.get('FLASK_SECRET_KEY')
-
-app.config['OAUTH2_PROVIDERS'] = {
-    # GitHub OAuth 2.0 documentation:
-    # https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
-    'github': {
-        'client_id': os.environ.get('GITHUB_CLIENT_ID'),
-        'client_secret': os.environ.get('GITHUB_CLIENT_SECRET'),
-        'authorize_url': 'https://github.com/login/oauth/authorize',
-        'token_url': 'https://github.com/login/oauth/access_token',
-        'userinfo': {
-            'url': 'https://api.github.com/user',
-            # 'email': 
-            # NOTE: to get both email and username, we need two calls
-            # See: https://stackoverflow.com/questions/35373995/github-user-email-is-null-despite-useremail-scope
-            'displayName': lambda json: json['name'],
-            'id': lambda json: json['login']
-        },
-        'scopes': ['user:email'],
-    },
-}
-
 @app.route('/logout')
 def logout():
     logout_user()
@@ -212,7 +171,7 @@ def oauth2_authorize(provider):
     if not current_user.is_anonymous:
         return redirect(url_for('index'))
 
-    provider_data = current_app.config['OAUTH2_PROVIDERS'].get(provider)
+    provider_data = OAUTH2_PROVIDERS.get(provider)
     if provider_data is None:
         abort(404)
 
@@ -238,7 +197,7 @@ def oauth2_callback(provider):
     if not current_user.is_anonymous:
         return redirect(url_for('index'))
 
-    provider_data = current_app.config['OAUTH2_PROVIDERS'].get(provider)
+    provider_data = OAUTH2_PROVIDERS.get(provider)
     if provider_data is None:
         abort(404)
 
