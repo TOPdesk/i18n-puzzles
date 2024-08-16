@@ -18,3 +18,5 @@ CREATE TABLE score (
 );
 
 INSERT INTO score (id, puzzle_id, timestamp, user_id) SELECT id, puzzle_id, timestamp, user_id FROM score_bkup;
+
+DROP table score_bkup;
