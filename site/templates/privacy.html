@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy{% endblock %}
+
+{% block content %}
+
+<h1>Privacy Policy for i18n-puzzles.com</h1>
+
+<p>
+    At i18n-puzzles.com, we value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your information in compliance with the GDPR and other applicable laws.
+</p>
+
+<h2>Information We Collect</h2>
+
+<ol>
+    <li>OAuth2 profile data: When you log in through an OAuth2 provider (such as github or google), we collect your unique user identifier and publicly visible display name from the provider. 
+        This information is used to track your progress and display your name on the public leaderboard.</li>
+    <li>Cookies: We use cookies to manage logged-in user sessions. These cookies help maintain your login status and session preferences.</li>
+    <li>Server logs: All visitors to this website have their IP address and basic browser information written to server logs. This logging is an essential part of running a website. It helps us debug problems with our site and monitor security. We don't share our log files with anyone.</li>
+</ol>
+
+<p>We do NOT collect email addresses.</p>
+
+<h2>How We Use Your Data</h2>
+
+<ol>
+    <li>Progress Tracking: Your identifier is used to track your progress in the puzzle challenges.</li>
+    <li>Public Display Name: Your publicly visible display name is shown on the site, including on leaderboards.</li>
+    <li>Analytics: server logs are used to analyze site usage patterns and enhance user experience.</li>
+</ol>
+
+<h2>Data Sharing</h2>
+
+<P>We do not share your personal data with third parties except as required by law.</P>
+
+<h2>Data Retention</h2>
+
+<p>
+    Your data is stored on our secure server located in the Netherlands.
+    Your data is retained for as long as you maintain an active account on i18n-puzzles.com.
+    You may request deletion of your account via {{ CONTACT_EMAIL }}. 
+    If you choose to delete your account, your data will be permanently removed. 
+    Due to the backup processes that we have in place, it may take up to 8 weeks before the data is completely removed from all our systems.
+</p>
+
+<h2>Your Rights</h2>
+
+<p>You have the right to access, correct, or delete your personal data. You may also object to the processing of your data or request data portability. To exercise these rights, please contact us at {{ CONTACT_EMAIL }}.</p>
+
+<h2>Changes to This Policy</h2>
+
+<p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and we encourage you to review it regularly.</p>
+
+<h2>Contact Us</h2>
+
+<p>If you have any questions or concerns about our Privacy Policy, please contact us at {{ CONTACT_EMAIL }}.</p>
+
+{% endblock %}

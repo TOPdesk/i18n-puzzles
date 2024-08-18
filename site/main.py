@@ -17,6 +17,8 @@ from oauth import OAUTH2_PROVIDERS
 
 load_dotenv()
 
+CONTACT_EMAIL = "m.van.iersel@topdesk.com"
+
 # Default puzzle directory may be overridden with env. variable
 puzzle_path = os.environ.get('PUZZLE_PATH') or "coding_challenge"
 db_uri = os.environ.get('DATABASE_URL') or 'sqlite:///scores.sqlite'
@@ -82,6 +84,10 @@ def get_puzzle_range():
 @app.route("/")
 def home():
     return render_template("index.html", puzzles=get_puzzle_range())
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html", CONTACT_EMAIL = CONTACT_EMAIL)
 
 @app.route('/myscore')
 def myscore():
