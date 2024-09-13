@@ -19,7 +19,7 @@ OAUTH2_PROVIDERS = {
             # 'email': 
             # NOTE: to get both email and username, we need two calls
             # See: https://stackoverflow.com/questions/35373995/github-user-email-is-null-despite-useremail-scope
-            'displayName': lambda json: json['name'],
+            'displayName': lambda json: json['name'] or json['login'], # NB: github name is not always defined, fallback to login
             'id': lambda json: json['login']
         },
         'scopes': ['user:email'],
@@ -67,7 +67,7 @@ def add_authentication(app):
         return url_for('oauth2_callback', provider=provider,
                                     _scheme=app.config['PREFERRED_URL_SCHEME'],
                                     _external=True)
-    
+
     @app.route('/authorize/<provider>')
     def oauth2_authorize(provider):
         if not current_user.is_anonymous:
