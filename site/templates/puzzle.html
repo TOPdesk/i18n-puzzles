@@ -7,9 +7,9 @@
 {% endmarkdown %}
 
 {% if current_user.is_authenticated %}
-Get your puzzle input <b><a href="{{ '/puzzleinput/%s'%puzzle_number }}">here</a></b>
+Get your puzzle input <b><a href="{{ url_for('puzzle_input', number=puzzle_number) }}">here</a></b>
 
-<form action = "{{ '/submitanswer/%s'%puzzle_number }}" method = "POST">
+<form action = "{{ url_for('submit_answer', number=puzzle_number) }}" method = "POST">
     <p><h3>Your answer:</h3></p>
     <p>
         <input type = 'text' name = 'answer_input'/>
