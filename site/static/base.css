@@ -31,3 +31,8 @@ em {
 .unsolved {
 	color: lightgray;
 }
+
+.announcement {
+	border: 1px solid black;
+	padding: 0 2rem 2rem 2rem;
+}

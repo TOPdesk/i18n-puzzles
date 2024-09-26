@@ -51,6 +51,10 @@ def add_puzzles(app):
     def index():
         return render_template("index.html", puzzles=get_puzzle_range())
 
+    @app.route("/about")
+    def about():
+        return render_template("about.html")
+
     @app.route('/myscore')
     def myscore():
         userId = current_user.id
